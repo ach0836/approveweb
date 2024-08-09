@@ -1,0 +1,49 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>BasicExpiresHandler.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>BasicExpiresHandler.java</h2>
+        <pre>package org.shaded.apache.http.impl.cookie;
+
+import org.shaded.apache.http.annotation.Immutable;
+import org.shaded.apache.http.cookie.MalformedCookieException;
+import org.shaded.apache.http.cookie.SetCookie;
+
+@Immutable
+public class BasicExpiresHandler extends AbstractCookieAttributeHandler {
+    private final String[] datepatterns;
+
+    public BasicExpiresHandler(String[] datepatterns2) {
+        if (datepatterns2 == null) {
+            throw new IllegalArgumentException("Array of date patterns may not be null");
+        }
+        this.datepatterns = datepatterns2;
+    }
+
+    public void parse(SetCookie cookie, String value) throws MalformedCookieException {
+        if (cookie == null) {
+            throw new IllegalArgumentException("Cookie may not be null");
+        } else if (value == null) {
+            throw new MalformedCookieException("Missing value for expires attribute");
+        } else {
+            try {
+                cookie.setExpiryDate(DateUtils.parseDate(value, this.datepatterns));
+            } catch (DateParseException e) {
+                throw new MalformedCookieException("Unable to parse expires attribute: " + value);
+            }
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,47 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>UninitializedType.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>UninitializedType.java</h2>
+        <pre>package gnu.bytecode;
+
+public class UninitializedType extends ObjectType {
+    ClassType ctype;
+    Label label;
+
+    UninitializedType(ClassType ctype2) {
+        super(ctype2.getName());
+        setSignature(ctype2.getSignature());
+        this.ctype = ctype2;
+    }
+
+    UninitializedType(ClassType ctype2, Label label2) {
+        this(ctype2);
+        this.label = label2;
+    }
+
+    static UninitializedType uninitializedThis(ClassType ctype2) {
+        return new UninitializedType(ctype2);
+    }
+
+    public Type getImplementationType() {
+        return this.ctype;
+    }
+
+    public String toString() {
+        return "Uninitialized<" + this.ctype.getName() + '>';
+    }
+}
+</pre>
+    </body>
+    </html>
+    

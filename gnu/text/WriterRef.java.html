@@ -1,0 +1,32 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>WriterRef.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>WriterRef.java</h2>
+        <pre>package gnu.text;
+
+import java.io.Writer;
+import java.lang.ref.WeakReference;
+
+/* compiled from: WriterManager */
+class WriterRef extends WeakReference {
+    WriterRef next;
+    WriterRef prev;
+
+    public WriterRef(Writer wr) {
+        super(wr);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

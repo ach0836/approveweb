@@ -1,0 +1,43 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>BasicResponseHandler.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>BasicResponseHandler.java</h2>
+        <pre>package org.shaded.apache.http.impl.client;
+
+import java.io.IOException;
+import org.shaded.apache.http.HttpEntity;
+import org.shaded.apache.http.HttpResponse;
+import org.shaded.apache.http.StatusLine;
+import org.shaded.apache.http.annotation.Immutable;
+import org.shaded.apache.http.client.HttpResponseException;
+import org.shaded.apache.http.client.ResponseHandler;
+import org.shaded.apache.http.util.EntityUtils;
+
+@Immutable
+public class BasicResponseHandler implements ResponseHandler<String> {
+    public String handleResponse(HttpResponse response) throws HttpResponseException, IOException {
+        StatusLine statusLine = response.getStatusLine();
+        if (statusLine.getStatusCode() >= 300) {
+            throw new HttpResponseException(statusLine.getStatusCode(), statusLine.getReasonPhrase());
+        }
+        HttpEntity entity = response.getEntity();
+        if (entity == null) {
+            return null;
+        }
+        return EntityUtils.toString(entity);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

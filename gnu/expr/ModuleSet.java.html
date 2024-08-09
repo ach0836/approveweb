@@ -1,0 +1,26 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ModuleSet.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ModuleSet.java</h2>
+        <pre>package gnu.expr;
+
+public abstract class ModuleSet {
+    public static final String MODULES_MAP = "$ModulesMap$";
+    ModuleSet next;
+
+    public abstract void register(ModuleManager moduleManager);
+}
+</pre>
+    </body>
+    </html>
+    

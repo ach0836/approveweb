@@ -1,0 +1,28 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PoolEntryRequest.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>PoolEntryRequest.java</h2>
+        <pre>package org.shaded.apache.http.impl.conn.tsccm;
+
+import java.util.concurrent.TimeUnit;
+import org.shaded.apache.http.conn.ConnectionPoolTimeoutException;
+
+public interface PoolEntryRequest {
+    void abortRequest();
+
+    BasicPoolEntry getPoolEntry(long j, TimeUnit timeUnit) throws InterruptedException, ConnectionPoolTimeoutException;
+}
+</pre>
+    </body>
+    </html>
+    

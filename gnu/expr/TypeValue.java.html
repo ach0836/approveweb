@@ -1,0 +1,35 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TypeValue.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>TypeValue.java</h2>
+        <pre>package gnu.expr;
+
+import gnu.bytecode.Variable;
+import gnu.mapping.Procedure;
+import java.lang.reflect.Type;
+
+public interface TypeValue extends Type {
+    Expression convertValue(Expression expression);
+
+    void emitIsInstance(Variable variable, Compilation compilation, Target target);
+
+    void emitTestIf(Variable variable, Declaration declaration, Compilation compilation);
+
+    Procedure getConstructor();
+
+    gnu.bytecode.Type getImplementationType();
+}
+</pre>
+    </body>
+    </html>
+    

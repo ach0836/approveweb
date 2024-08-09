@@ -1,0 +1,52 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>BinaryOp.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>BinaryOp.java</h2>
+        <pre>package gnu.ecmascript;
+
+import gnu.mapping.Procedure2;
+
+public class BinaryOp extends Procedure2 {
+    int op;
+
+    public BinaryOp(String name, int op2) {
+        setName(name);
+        this.op = op2;
+    }
+
+    public Object apply2(Object arg1, Object arg2) {
+        if (this.op == 5) {
+            return Convert.toNumber(arg1) < Convert.toNumber(arg2) ? Boolean.TRUE : Boolean.FALSE;
+        }
+        return new Double(apply(Convert.toNumber(arg1), Convert.toNumber(arg2)));
+    }
+
+    public double apply(double arg1, double arg2) {
+        switch (this.op) {
+            case 1:
+                return arg1 + arg2;
+            case 2:
+                return arg1 - arg2;
+            case 3:
+                return arg1 * arg2;
+            case 4:
+                return (double) (((int) arg1) << (((int) arg2) & 31));
+            default:
+                return Double.NaN;
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

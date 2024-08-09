@@ -1,0 +1,39 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TraceCompat.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>TraceCompat.java</h2>
+        <pre>package androidx.core.os;
+
+import android.os.Build;
+import android.os.Trace;
+
+public final class TraceCompat {
+    public static void beginSection(String sectionName) {
+        if (Build.VERSION.SDK_INT >= 18) {
+            Trace.beginSection(sectionName);
+        }
+    }
+
+    public static void endSection() {
+        if (Build.VERSION.SDK_INT >= 18) {
+            Trace.endSection();
+        }
+    }
+
+    private TraceCompat() {
+    }
+}
+</pre>
+    </body>
+    </html>
+    

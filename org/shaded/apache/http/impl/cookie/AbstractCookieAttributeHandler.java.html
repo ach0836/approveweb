@@ -1,0 +1,35 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AbstractCookieAttributeHandler.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>AbstractCookieAttributeHandler.java</h2>
+        <pre>package org.shaded.apache.http.impl.cookie;
+
+import org.shaded.apache.http.annotation.Immutable;
+import org.shaded.apache.http.cookie.Cookie;
+import org.shaded.apache.http.cookie.CookieAttributeHandler;
+import org.shaded.apache.http.cookie.CookieOrigin;
+import org.shaded.apache.http.cookie.MalformedCookieException;
+
+@Immutable
+public abstract class AbstractCookieAttributeHandler implements CookieAttributeHandler {
+    public void validate(Cookie cookie, CookieOrigin origin) throws MalformedCookieException {
+    }
+
+    public boolean match(Cookie cookie, CookieOrigin origin) {
+        return true;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

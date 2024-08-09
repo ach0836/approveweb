@@ -1,0 +1,36 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Size.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>Size.java</h2>
+        <pre>package androidx.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.PARAMETER, ElementType.LOCAL_VARIABLE, ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
+@Retention(RetentionPolicy.CLASS)
+public @interface Size {
+    long max() default Long.MAX_VALUE;
+
+    long min() default Long.MIN_VALUE;
+
+    long multiple() default 1;
+
+    long value() default -1;
+}
+</pre>
+    </body>
+    </html>
+    

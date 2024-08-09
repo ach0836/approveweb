@@ -1,0 +1,31 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HttpRouteDirector.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>HttpRouteDirector.java</h2>
+        <pre>package org.shaded.apache.http.conn.routing;
+
+public interface HttpRouteDirector {
+    public static final int COMPLETE = 0;
+    public static final int CONNECT_PROXY = 2;
+    public static final int CONNECT_TARGET = 1;
+    public static final int LAYER_PROTOCOL = 5;
+    public static final int TUNNEL_PROXY = 4;
+    public static final int TUNNEL_TARGET = 3;
+    public static final int UNREACHABLE = -1;
+
+    int nextStep(RouteInfo routeInfo, RouteInfo routeInfo2);
+}
+</pre>
+    </body>
+    </html>
+    

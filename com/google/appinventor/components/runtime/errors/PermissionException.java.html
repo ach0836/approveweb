@@ -1,0 +1,35 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PermissionException.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>PermissionException.java</h2>
+        <pre>package com.google.appinventor.components.runtime.errors;
+
+public class PermissionException extends RuntimeException {
+    private final String permissionNeeded;
+
+    public PermissionException(String permissionNeeded2) {
+        this.permissionNeeded = permissionNeeded2;
+    }
+
+    public String getPermissionNeeded() {
+        return this.permissionNeeded;
+    }
+
+    public String getMessage() {
+        return "Unable to complete the operation because the user denied permission: " + this.permissionNeeded;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

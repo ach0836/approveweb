@@ -1,0 +1,61 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>StringDeserializer.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>StringDeserializer.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.databind.deser.std;
+
+import com.shaded.fasterxml.jackson.core.Base64Variants;
+import com.shaded.fasterxml.jackson.core.JsonParser;
+import com.shaded.fasterxml.jackson.core.JsonProcessingException;
+import com.shaded.fasterxml.jackson.core.JsonToken;
+import com.shaded.fasterxml.jackson.databind.DeserializationContext;
+import com.shaded.fasterxml.jackson.databind.annotation.JacksonStdImpl;
+import com.shaded.fasterxml.jackson.databind.jsontype.TypeDeserializer;
+import java.io.IOException;
+
+@JacksonStdImpl
+public final class StringDeserializer extends StdScalarDeserializer<String> {
+    public static final StringDeserializer instance = new StringDeserializer();
+    private static final long serialVersionUID = 1;
+
+    public StringDeserializer() {
+        super((Class<?>) String.class);
+    }
+
+    public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+        String valueAsString = jsonParser.getValueAsString();
+        if (valueAsString != null) {
+            return valueAsString;
+        }
+        JsonToken currentToken = jsonParser.getCurrentToken();
+        if (currentToken == JsonToken.VALUE_EMBEDDED_OBJECT) {
+            Object embeddedObject = jsonParser.getEmbeddedObject();
+            if (embeddedObject == null) {
+                return null;
+            }
+            if (embeddedObject instanceof byte[]) {
+                return Base64Variants.getDefaultVariant().encode((byte[]) embeddedObject, false);
+            }
+            return embeddedObject.toString();
+        }
+        throw deserializationContext.mappingException(this._valueClass, currentToken);
+    }
+
+    public String deserializeWithType(JsonParser jsonParser, DeserializationContext deserializationContext, TypeDeserializer typeDeserializer) throws IOException, JsonProcessingException {
+        return deserialize(jsonParser, deserializationContext);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

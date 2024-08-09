@@ -1,0 +1,42 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ReadOnlyLocation.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ReadOnlyLocation.java</h2>
+        <pre>package gnu.mapping;
+
+public class ReadOnlyLocation extends ConstrainedLocation {
+    public static ReadOnlyLocation make(Location base) {
+        ReadOnlyLocation rloc = new ReadOnlyLocation();
+        rloc.base = base;
+        return rloc;
+    }
+
+    public boolean isConstant() {
+        return true;
+    }
+
+    /* access modifiers changed from: protected */
+    public Object coerce(Object newValue) {
+        StringBuffer sbuf = new StringBuffer("attempt to modify read-only location");
+        Symbol name = getKeySymbol();
+        if (name != null) {
+            sbuf.append(": ");
+            sbuf.append(name);
+        }
+        throw new IllegalStateException(sbuf.toString());
+    }
+}
+</pre>
+    </body>
+    </html>
+    

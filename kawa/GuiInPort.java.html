@@ -1,0 +1,38 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>GuiInPort.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>GuiInPort.java</h2>
+        <pre>package kawa;
+
+import gnu.mapping.OutPort;
+import gnu.mapping.TtyInPort;
+import gnu.text.Path;
+import java.io.IOException;
+import java.io.Reader;
+
+class GuiInPort extends TtyInPort {
+    ReplDocument document;
+
+    public GuiInPort(Reader in, Path path, OutPort tie, ReplDocument document2) {
+        super(in, path, tie);
+        this.document = document2;
+    }
+
+    public void emitPrompt(String prompt) throws IOException {
+        this.document.write(prompt, ReplDocument.promptStyle);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

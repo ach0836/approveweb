@@ -1,0 +1,36 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Prompter.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>Prompter.java</h2>
+        <pre>package gnu.ecmascript;
+
+import gnu.mapping.InPort;
+import gnu.mapping.Procedure1;
+
+class Prompter extends Procedure1 {
+    Prompter() {
+    }
+
+    /* access modifiers changed from: package-private */
+    public String prompt(InPort port) {
+        return "(EcmaScript:" + (port.getLineNumber() + 1) + ") ";
+    }
+
+    public Object apply1(Object arg) {
+        return prompt((InPort) arg);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,33 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>FullLifecycleObserver.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>FullLifecycleObserver.java</h2>
+        <pre>package androidx.lifecycle;
+
+interface FullLifecycleObserver extends LifecycleObserver {
+    void onCreate(LifecycleOwner lifecycleOwner);
+
+    void onDestroy(LifecycleOwner lifecycleOwner);
+
+    void onPause(LifecycleOwner lifecycleOwner);
+
+    void onResume(LifecycleOwner lifecycleOwner);
+
+    void onStart(LifecycleOwner lifecycleOwner);
+
+    void onStop(LifecycleOwner lifecycleOwner);
+}
+</pre>
+    </body>
+    </html>
+    

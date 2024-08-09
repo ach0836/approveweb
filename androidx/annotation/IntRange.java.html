@@ -1,0 +1,32 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IntRange.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>IntRange.java</h2>
+        <pre>package androidx.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.METHOD, ElementType.PARAMETER, ElementType.FIELD, ElementType.LOCAL_VARIABLE, ElementType.ANNOTATION_TYPE})
+@Retention(RetentionPolicy.CLASS)
+public @interface IntRange {
+    long from() default Long.MIN_VALUE;
+
+    long to() default Long.MAX_VALUE;
+}
+</pre>
+    </body>
+    </html>
+    

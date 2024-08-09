@@ -1,0 +1,42 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HttpPut.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>HttpPut.java</h2>
+        <pre>package org.shaded.apache.http.client.methods;
+
+import java.net.URI;
+import org.shaded.apache.http.annotation.NotThreadSafe;
+
+@NotThreadSafe
+public class HttpPut extends HttpEntityEnclosingRequestBase {
+    public static final String METHOD_NAME = "PUT";
+
+    public HttpPut() {
+    }
+
+    public HttpPut(URI uri) {
+        setURI(uri);
+    }
+
+    public HttpPut(String uri) {
+        setURI(URI.create(uri));
+    }
+
+    public String getMethod() {
+        return METHOD_NAME;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,33 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>BeanPropertyFilter.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>BeanPropertyFilter.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.databind.ser;
+
+import com.shaded.fasterxml.jackson.core.JsonGenerator;
+import com.shaded.fasterxml.jackson.databind.JsonMappingException;
+import com.shaded.fasterxml.jackson.databind.SerializerProvider;
+import com.shaded.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
+import com.shaded.fasterxml.jackson.databind.node.ObjectNode;
+
+public interface BeanPropertyFilter {
+    void depositSchemaProperty(BeanPropertyWriter beanPropertyWriter, JsonObjectFormatVisitor jsonObjectFormatVisitor, SerializerProvider serializerProvider) throws JsonMappingException;
+
+    void depositSchemaProperty(BeanPropertyWriter beanPropertyWriter, ObjectNode objectNode, SerializerProvider serializerProvider) throws JsonMappingException;
+
+    void serializeAsField(Object obj, JsonGenerator jsonGenerator, SerializerProvider serializerProvider, BeanPropertyWriter beanPropertyWriter) throws Exception;
+}
+</pre>
+    </body>
+    </html>
+    

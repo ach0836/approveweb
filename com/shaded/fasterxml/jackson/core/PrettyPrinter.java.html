@@ -1,0 +1,43 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PrettyPrinter.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>PrettyPrinter.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.core;
+
+import java.io.IOException;
+
+public interface PrettyPrinter {
+    void beforeArrayValues(JsonGenerator jsonGenerator) throws IOException, JsonGenerationException;
+
+    void beforeObjectEntries(JsonGenerator jsonGenerator) throws IOException, JsonGenerationException;
+
+    void writeArrayValueSeparator(JsonGenerator jsonGenerator) throws IOException, JsonGenerationException;
+
+    void writeEndArray(JsonGenerator jsonGenerator, int i) throws IOException, JsonGenerationException;
+
+    void writeEndObject(JsonGenerator jsonGenerator, int i) throws IOException, JsonGenerationException;
+
+    void writeObjectEntrySeparator(JsonGenerator jsonGenerator) throws IOException, JsonGenerationException;
+
+    void writeObjectFieldValueSeparator(JsonGenerator jsonGenerator) throws IOException, JsonGenerationException;
+
+    void writeRootValueSeparator(JsonGenerator jsonGenerator) throws IOException, JsonGenerationException;
+
+    void writeStartArray(JsonGenerator jsonGenerator) throws IOException, JsonGenerationException;
+
+    void writeStartObject(JsonGenerator jsonGenerator) throws IOException, JsonGenerationException;
+}
+</pre>
+    </body>
+    </html>
+    

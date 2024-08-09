@@ -1,0 +1,51 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>FitWindowsFrameLayout.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>FitWindowsFrameLayout.java</h2>
+        <pre>package androidx.appcompat.widget;
+
+import android.content.Context;
+import android.graphics.Rect;
+import android.util.AttributeSet;
+import android.widget.FrameLayout;
+import androidx.annotation.RestrictTo;
+import androidx.appcompat.widget.FitWindowsViewGroup;
+
+@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+public class FitWindowsFrameLayout extends FrameLayout implements FitWindowsViewGroup {
+    private FitWindowsViewGroup.OnFitSystemWindowsListener mListener;
+
+    public FitWindowsFrameLayout(Context context) {
+        super(context);
+    }
+
+    public FitWindowsFrameLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public void setOnFitSystemWindowsListener(FitWindowsViewGroup.OnFitSystemWindowsListener listener) {
+        this.mListener = listener;
+    }
+
+    /* access modifiers changed from: protected */
+    public boolean fitSystemWindows(Rect insets) {
+        if (this.mListener != null) {
+            this.mListener.onFitSystemWindows(insets);
+        }
+        return super.fitSystemWindows(insets);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

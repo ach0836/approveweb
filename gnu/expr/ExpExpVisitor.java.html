@@ -1,0 +1,31 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ExpExpVisitor.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ExpExpVisitor.java</h2>
+        <pre>package gnu.expr;
+
+public abstract class ExpExpVisitor<D> extends ExpVisitor<Expression, D> {
+    /* access modifiers changed from: protected */
+    public Expression update(Expression exp, Expression r) {
+        return r;
+    }
+
+    /* access modifiers changed from: protected */
+    public Expression defaultValue(Expression r, D d) {
+        return r;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

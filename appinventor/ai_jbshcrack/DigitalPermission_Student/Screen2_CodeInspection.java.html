@@ -1,0 +1,1437 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Screen2_CodeInspection.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>Screen2_CodeInspection.java</h2>
+        <pre>package appinventor.ai_jbshcrack.DigitalPermission_Student;
+
+import android.os.Bundle;
+import androidx.fragment.app.FragmentTransaction;
+import com.google.appinventor.components.common.PropertyTypeConstants;
+import com.google.appinventor.components.runtime.AppInventorCompatActivity;
+import com.google.appinventor.components.runtime.Button;
+import com.google.appinventor.components.runtime.Component;
+import com.google.appinventor.components.runtime.EventDispatcher;
+import com.google.appinventor.components.runtime.FirebaseDB;
+import com.google.appinventor.components.runtime.Form;
+import com.google.appinventor.components.runtime.HandlesEventDispatching;
+import com.google.appinventor.components.runtime.HorizontalArrangement;
+import com.google.appinventor.components.runtime.Image;
+import com.google.appinventor.components.runtime.Label;
+import com.google.appinventor.components.runtime.Notifier;
+import com.google.appinventor.components.runtime.PasswordTextBox;
+import com.google.appinventor.components.runtime.TinyDB;
+import com.google.appinventor.components.runtime.errors.PermissionException;
+import com.google.appinventor.components.runtime.errors.YailRuntimeError;
+import com.google.appinventor.components.runtime.util.RetValManager;
+import com.google.appinventor.components.runtime.util.RuntimeErrorAlert;
+import com.google.youngandroid.runtime;
+import gnu.expr.Language;
+import gnu.expr.ModuleBody;
+import gnu.expr.ModuleInfo;
+import gnu.expr.ModuleMethod;
+import gnu.kawa.functions.Apply;
+import gnu.kawa.functions.Format;
+import gnu.kawa.functions.GetNamedPart;
+import gnu.kawa.functions.IsEqual;
+import gnu.kawa.reflect.Invoke;
+import gnu.kawa.reflect.SlotGet;
+import gnu.kawa.reflect.SlotSet;
+import gnu.lists.Consumer;
+import gnu.lists.FString;
+import gnu.lists.LList;
+import gnu.lists.Pair;
+import gnu.lists.PairWithPosition;
+import gnu.lists.VoidConsumer;
+import gnu.mapping.CallContext;
+import gnu.mapping.Environment;
+import gnu.mapping.Procedure;
+import gnu.mapping.SimpleSymbol;
+import gnu.mapping.Symbol;
+import gnu.mapping.Values;
+import gnu.mapping.WrongType;
+import gnu.math.IntNum;
+import kawa.lang.Promise;
+import kawa.lib.lists;
+import kawa.lib.misc;
+import kawa.lib.strings;
+import kawa.standard.Scheme;
+
+/* compiled from: Screen2_CodeInspection.yail */
+public class Screen2_CodeInspection extends Form implements Runnable {
+    static final SimpleSymbol Lit0 = ((SimpleSymbol) new SimpleSymbol("Screen2_CodeInspection").readResolve());
+    static final SimpleSymbol Lit1 = ((SimpleSymbol) new SimpleSymbol("getMessage").readResolve());
+    static final SimpleSymbol Lit10;
+    static final FString Lit100 = new FString("com.google.appinventor.components.runtime.TinyDB");
+    static final FString Lit101 = new FString("com.google.appinventor.components.runtime.TinyDB");
+    static final SimpleSymbol Lit102 = ((SimpleSymbol) new SimpleSymbol("get-simple-name").readResolve());
+    static final SimpleSymbol Lit103 = ((SimpleSymbol) new SimpleSymbol("android-log-form").readResolve());
+    static final SimpleSymbol Lit104 = ((SimpleSymbol) new SimpleSymbol("add-to-form-environment").readResolve());
+    static final SimpleSymbol Lit105 = ((SimpleSymbol) new SimpleSymbol("lookup-in-form-environment").readResolve());
+    static final SimpleSymbol Lit106 = ((SimpleSymbol) new SimpleSymbol("is-bound-in-form-environment").readResolve());
+    static final SimpleSymbol Lit107 = ((SimpleSymbol) new SimpleSymbol("add-to-global-var-environment").readResolve());
+    static final SimpleSymbol Lit108 = ((SimpleSymbol) new SimpleSymbol("add-to-events").readResolve());
+    static final SimpleSymbol Lit109 = ((SimpleSymbol) new SimpleSymbol("add-to-components").readResolve());
+    static final SimpleSymbol Lit11 = ((SimpleSymbol) new SimpleSymbol("AlignHorizontal").readResolve());
+    static final SimpleSymbol Lit110 = ((SimpleSymbol) new SimpleSymbol("add-to-global-vars").readResolve());
+    static final SimpleSymbol Lit111 = ((SimpleSymbol) new SimpleSymbol("add-to-form-do-after-creation").readResolve());
+    static final SimpleSymbol Lit112 = ((SimpleSymbol) new SimpleSymbol("send-error").readResolve());
+    static final SimpleSymbol Lit113 = ((SimpleSymbol) new SimpleSymbol("dispatchEvent").readResolve());
+    static final SimpleSymbol Lit114 = ((SimpleSymbol) new SimpleSymbol("dispatchGenericEvent").readResolve());
+    static final SimpleSymbol Lit115 = ((SimpleSymbol) new SimpleSymbol("lookup-handler").readResolve());
+    static final SimpleSymbol Lit116 = ((SimpleSymbol) new SimpleSymbol("any").readResolve());
+    static final IntNum Lit12 = IntNum.make(3);
+    static final SimpleSymbol Lit13 = ((SimpleSymbol) new SimpleSymbol("AppName").readResolve());
+    static final SimpleSymbol Lit14 = ((SimpleSymbol) new SimpleSymbol("CloseScreenAnimation").readResolve());
+    static final SimpleSymbol Lit15 = ((SimpleSymbol) new SimpleSymbol("OpenScreenAnimation").readResolve());
+    static final SimpleSymbol Lit16 = ((SimpleSymbol) new SimpleSymbol("PrimaryColor").readResolve());
+    static final IntNum Lit17;
+    static final SimpleSymbol Lit18 = ((SimpleSymbol) new SimpleSymbol("PrimaryColorDark").readResolve());
+    static final IntNum Lit19;
+    static final SimpleSymbol Lit2 = ((SimpleSymbol) new SimpleSymbol("*the-null-value*").readResolve());
+    static final SimpleSymbol Lit20 = ((SimpleSymbol) new SimpleSymbol("ShowListsAsJson").readResolve());
+    static final SimpleSymbol Lit21 = ((SimpleSymbol) new SimpleSymbol("Sizing").readResolve());
+    static final SimpleSymbol Lit22 = ((SimpleSymbol) new SimpleSymbol("Theme").readResolve());
+    static final SimpleSymbol Lit23 = ((SimpleSymbol) new SimpleSymbol("Title").readResolve());
+    static final SimpleSymbol Lit24 = ((SimpleSymbol) new SimpleSymbol("Notifier1").readResolve());
+    static final SimpleSymbol Lit25 = ((SimpleSymbol) new SimpleSymbol("ShowChooseDialog").readResolve());
+    static final PairWithPosition Lit26;
+    static final SimpleSymbol Lit27 = ((SimpleSymbol) new SimpleSymbol("Screen2_CodeInspection$BackPressed").readResolve());
+    static final SimpleSymbol Lit28 = ((SimpleSymbol) new SimpleSymbol("BackPressed").readResolve());
+    static final FString Lit29 = new FString("com.google.appinventor.components.runtime.HorizontalArrangement");
+    static final SimpleSymbol Lit3 = ((SimpleSymbol) new SimpleSymbol("p$스크린_닫기").readResolve());
+    static final SimpleSymbol Lit30 = ((SimpleSymbol) new SimpleSymbol("HorizontalArrangement1").readResolve());
+    static final SimpleSymbol Lit31 = ((SimpleSymbol) new SimpleSymbol("Height").readResolve());
+    static final IntNum Lit32 = IntNum.make(-1005);
+    static final FString Lit33 = new FString("com.google.appinventor.components.runtime.HorizontalArrangement");
+    static final FString Lit34 = new FString("com.google.appinventor.components.runtime.Image");
+    static final SimpleSymbol Lit35 = ((SimpleSymbol) new SimpleSymbol("Image1").readResolve());
+    static final IntNum Lit36 = IntNum.make(-1015);
+    static final SimpleSymbol Lit37 = ((SimpleSymbol) new SimpleSymbol("Picture").readResolve());
+    static final SimpleSymbol Lit38 = ((SimpleSymbol) new SimpleSymbol("Width").readResolve());
+    static final IntNum Lit39 = IntNum.make(-1090);
+    static final SimpleSymbol Lit4 = ((SimpleSymbol) new SimpleSymbol("AboutScreen").readResolve());
+    static final FString Lit40 = new FString("com.google.appinventor.components.runtime.Image");
+    static final FString Lit41 = new FString("com.google.appinventor.components.runtime.Image");
+    static final SimpleSymbol Lit42 = ((SimpleSymbol) new SimpleSymbol("Image2").readResolve());
+    static final IntNum Lit43 = IntNum.make(-1095);
+    static final FString Lit44 = new FString("com.google.appinventor.components.runtime.Image");
+    static final FString Lit45 = new FString("com.google.appinventor.components.runtime.HorizontalArrangement");
+    static final SimpleSymbol Lit46 = ((SimpleSymbol) new SimpleSymbol("HorizontalArrangement2").readResolve());
+    static final IntNum Lit47 = IntNum.make(-1010);
+    static final FString Lit48 = new FString("com.google.appinventor.components.runtime.HorizontalArrangement");
+    static final FString Lit49 = new FString("com.google.appinventor.components.runtime.HorizontalArrangement");
+    static final SimpleSymbol Lit5;
+    static final SimpleSymbol Lit50 = ((SimpleSymbol) new SimpleSymbol("레이아웃1").readResolve());
+    static final SimpleSymbol Lit51 = ((SimpleSymbol) new SimpleSymbol("AlignVertical").readResolve());
+    static final IntNum Lit52 = IntNum.make(2);
+    static final IntNum Lit53 = IntNum.make(-1010);
+    static final FString Lit54 = new FString("com.google.appinventor.components.runtime.HorizontalArrangement");
+    static final FString Lit55 = new FString("com.google.appinventor.components.runtime.PasswordTextBox");
+    static final SimpleSymbol Lit56 = ((SimpleSymbol) new SimpleSymbol("코드_입력하는_곳").readResolve());
+    static final SimpleSymbol Lit57 = ((SimpleSymbol) new SimpleSymbol("Hint").readResolve());
+    static final FString Lit58 = new FString("com.google.appinventor.components.runtime.PasswordTextBox");
+    static final FString Lit59 = new FString("com.google.appinventor.components.runtime.Label");
+    static final SimpleSymbol Lit6 = ((SimpleSymbol) new SimpleSymbol("AccentColor").readResolve());
+    static final SimpleSymbol Lit60 = ((SimpleSymbol) new SimpleSymbol("여백").readResolve());
+    static final SimpleSymbol Lit61 = ((SimpleSymbol) new SimpleSymbol("Text").readResolve());
+    static final SimpleSymbol Lit62 = ((SimpleSymbol) new SimpleSymbol("TextColor").readResolve());
+    static final IntNum Lit63 = IntNum.make(16777215);
+    static final FString Lit64 = new FString("com.google.appinventor.components.runtime.Label");
+    static final FString Lit65 = new FString("com.google.appinventor.components.runtime.Button");
+    static final SimpleSymbol Lit66 = ((SimpleSymbol) new SimpleSymbol("확인_버튼").readResolve());
+    static final FString Lit67 = new FString("com.google.appinventor.components.runtime.Button");
+    static final SimpleSymbol Lit68 = ((SimpleSymbol) new SimpleSymbol("ShowProgressDialog").readResolve());
+    static final PairWithPosition Lit69 = PairWithPosition.make(Lit5, PairWithPosition.make(Lit5, LList.Empty, "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 397485), "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 397479);
+    static final IntNum Lit7;
+    static final SimpleSymbol Lit70 = ((SimpleSymbol) new SimpleSymbol("Firebase_코드확인").readResolve());
+    static final SimpleSymbol Lit71 = ((SimpleSymbol) new SimpleSymbol("GetValue").readResolve());
+    static final PairWithPosition Lit72 = PairWithPosition.make(Lit5, PairWithPosition.make(Lit116, LList.Empty, "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 397598), "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 397592);
+    static final SimpleSymbol Lit73 = ((SimpleSymbol) new SimpleSymbol("확인_버튼$Click").readResolve());
+    static final SimpleSymbol Lit74 = ((SimpleSymbol) new SimpleSymbol("Click").readResolve());
+    static final FString Lit75 = new FString("com.google.appinventor.components.runtime.Notifier");
+    static final FString Lit76 = new FString("com.google.appinventor.components.runtime.Notifier");
+    static final SimpleSymbol Lit77 = ((SimpleSymbol) new SimpleSymbol("$choice").readResolve());
+    static final PairWithPosition Lit78 = PairWithPosition.make(Lit116, PairWithPosition.make(Lit116, LList.Empty, "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 426086), "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 426081);
+    static final SimpleSymbol Lit79 = ((SimpleSymbol) new SimpleSymbol("Notifier1$AfterChoosing").readResolve());
+    static final SimpleSymbol Lit8 = ((SimpleSymbol) new SimpleSymbol("number").readResolve());
+    static final SimpleSymbol Lit80 = ((SimpleSymbol) new SimpleSymbol("AfterChoosing").readResolve());
+    static final FString Lit81 = new FString("com.google.appinventor.components.runtime.FirebaseDB");
+    static final SimpleSymbol Lit82 = ((SimpleSymbol) new SimpleSymbol("DefaultURL").readResolve());
+    static final SimpleSymbol Lit83 = ((SimpleSymbol) new SimpleSymbol("DeveloperBucket").readResolve());
+    static final SimpleSymbol Lit84 = ((SimpleSymbol) new SimpleSymbol("FirebaseToken").readResolve());
+    static final SimpleSymbol Lit85 = ((SimpleSymbol) new SimpleSymbol("FirebaseURL").readResolve());
+    static final SimpleSymbol Lit86 = ((SimpleSymbol) new SimpleSymbol("ProjectBucket").readResolve());
+    static final FString Lit87 = new FString("com.google.appinventor.components.runtime.FirebaseDB");
+    static final SimpleSymbol Lit88 = ((SimpleSymbol) new SimpleSymbol("$value").readResolve());
+    static final PairWithPosition Lit89 = PairWithPosition.make(Lit116, PairWithPosition.make(Lit116, LList.Empty, "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 495740), "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 495735);
+    static final SimpleSymbol Lit9 = ((SimpleSymbol) new SimpleSymbol("ActionBar").readResolve());
+    static final SimpleSymbol Lit90 = ((SimpleSymbol) new SimpleSymbol("TinyDB_코드저장").readResolve());
+    static final SimpleSymbol Lit91 = ((SimpleSymbol) new SimpleSymbol("StoreValue").readResolve());
+    static final PairWithPosition Lit92 = PairWithPosition.make(Lit5, PairWithPosition.make(Lit116, LList.Empty, "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 495882), "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 495876);
+    static final SimpleSymbol Lit93 = ((SimpleSymbol) new SimpleSymbol("DismissProgressDialog").readResolve());
+    static final SimpleSymbol Lit94 = ((SimpleSymbol) new SimpleSymbol("HideKeyboard").readResolve());
+    static final PairWithPosition Lit95 = PairWithPosition.make(Lit5, LList.Empty, "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 496166);
+    static final SimpleSymbol Lit96 = ((SimpleSymbol) new SimpleSymbol("ShowAlert").readResolve());
+    static final PairWithPosition Lit97;
+    static final SimpleSymbol Lit98 = ((SimpleSymbol) new SimpleSymbol("Firebase_코드확인$GotValue").readResolve());
+    static final SimpleSymbol Lit99 = ((SimpleSymbol) new SimpleSymbol("GotValue").readResolve());
+    public static Screen2_CodeInspection Screen2_CodeInspection;
+    static final ModuleMethod lambda$Fn1 = null;
+    static final ModuleMethod lambda$Fn10 = null;
+    static final ModuleMethod lambda$Fn11 = null;
+    static final ModuleMethod lambda$Fn12 = null;
+    static final ModuleMethod lambda$Fn13 = null;
+    static final ModuleMethod lambda$Fn14 = null;
+    static final ModuleMethod lambda$Fn15 = null;
+    static final ModuleMethod lambda$Fn16 = null;
+    static final ModuleMethod lambda$Fn17 = null;
+    static final ModuleMethod lambda$Fn18 = null;
+    static final ModuleMethod lambda$Fn19 = null;
+    static final ModuleMethod lambda$Fn2 = null;
+    static final ModuleMethod lambda$Fn20 = null;
+    static final ModuleMethod lambda$Fn21 = null;
+    static final ModuleMethod lambda$Fn22 = null;
+    static final ModuleMethod lambda$Fn23 = null;
+    static final ModuleMethod lambda$Fn3 = null;
+    static final ModuleMethod lambda$Fn4 = null;
+    static final ModuleMethod lambda$Fn5 = null;
+    static final ModuleMethod lambda$Fn6 = null;
+    static final ModuleMethod lambda$Fn7 = null;
+    static final ModuleMethod lambda$Fn8 = null;
+    static final ModuleMethod lambda$Fn9 = null;
+    public Boolean $Stdebug$Mnform$St;
+    public final ModuleMethod $define;
+
+    /* renamed from: Firebase_코드확인  reason: contains not printable characters */
+    public FirebaseDB f15Firebase_;
+
+    /* renamed from: Firebase_코드확인$GotValue  reason: contains not printable characters */
+    public final ModuleMethod f16Firebase_$GotValue;
+    public HorizontalArrangement HorizontalArrangement1;
+    public HorizontalArrangement HorizontalArrangement2;
+    public Image Image1;
+    public Image Image2;
+    public Notifier Notifier1;
+    public final ModuleMethod Notifier1$AfterChoosing;
+    public final ModuleMethod Screen2_CodeInspection$BackPressed;
+
+    /* renamed from: TinyDB_코드저장  reason: contains not printable characters */
+    public TinyDB f17TinyDB_;
+    public final ModuleMethod add$Mnto$Mncomponents;
+    public final ModuleMethod add$Mnto$Mnevents;
+    public final ModuleMethod add$Mnto$Mnform$Mndo$Mnafter$Mncreation;
+    public final ModuleMethod add$Mnto$Mnform$Mnenvironment;
+    public final ModuleMethod add$Mnto$Mnglobal$Mnvar$Mnenvironment;
+    public final ModuleMethod add$Mnto$Mnglobal$Mnvars;
+    public final ModuleMethod android$Mnlog$Mnform;
+    public LList components$Mnto$Mncreate;
+    public final ModuleMethod dispatchEvent;
+    public final ModuleMethod dispatchGenericEvent;
+    public LList events$Mnto$Mnregister;
+    public LList form$Mndo$Mnafter$Mncreation;
+    public Environment form$Mnenvironment;
+    public Symbol form$Mnname$Mnsymbol;
+    public final ModuleMethod get$Mnsimple$Mnname;
+    public Environment global$Mnvar$Mnenvironment;
+    public LList global$Mnvars$Mnto$Mncreate;
+    public final ModuleMethod is$Mnbound$Mnin$Mnform$Mnenvironment;
+    public final ModuleMethod lookup$Mnhandler;
+    public final ModuleMethod lookup$Mnin$Mnform$Mnenvironment;
+    public final ModuleMethod onCreate;
+    public final ModuleMethod process$Mnexception;
+    public final ModuleMethod send$Mnerror;
+
+    /* renamed from: 레이아웃1  reason: contains not printable characters */
+    public HorizontalArrangement f181;
+
+    /* renamed from: 여백  reason: contains not printable characters */
+    public Label f19;
+
+    /* renamed from: 코드_입력하는_곳  reason: contains not printable characters */
+    public PasswordTextBox f20__;
+
+    /* renamed from: 확인_버튼  reason: contains not printable characters */
+    public Button f21_;
+
+    /* renamed from: 확인_버튼$Click  reason: contains not printable characters */
+    public final ModuleMethod f22_$Click;
+
+    static {
+        SimpleSymbol simpleSymbol = (SimpleSymbol) new SimpleSymbol(PropertyTypeConstants.PROPERTY_TYPE_TEXT).readResolve();
+        Lit5 = simpleSymbol;
+        Lit97 = PairWithPosition.make(simpleSymbol, LList.Empty, "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 496460);
+        SimpleSymbol simpleSymbol2 = Lit5;
+        SimpleSymbol simpleSymbol3 = Lit5;
+        SimpleSymbol simpleSymbol4 = Lit5;
+        SimpleSymbol simpleSymbol5 = Lit5;
+        SimpleSymbol simpleSymbol6 = (SimpleSymbol) new SimpleSymbol(PropertyTypeConstants.PROPERTY_TYPE_BOOLEAN).readResolve();
+        Lit10 = simpleSymbol6;
+        Lit26 = PairWithPosition.make(simpleSymbol2, PairWithPosition.make(simpleSymbol3, PairWithPosition.make(simpleSymbol4, PairWithPosition.make(simpleSymbol5, PairWithPosition.make(simpleSymbol6, LList.Empty, "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 110816), "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 110811), "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 110806), "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 110801), "/tmp/1598340104887_0.010426055074521212-0/youngandroidproject/../src/appinventor/ai_jbshcrack/DigitalPermission_Student/Screen2_CodeInspection.yail", 110795);
+        int[] iArr = new int[2];
+        iArr[0] = -16777216;
+        Lit19 = IntNum.make(iArr);
+        int[] iArr2 = new int[2];
+        iArr2[0] = -16777216;
+        Lit17 = IntNum.make(iArr2);
+        int[] iArr3 = new int[2];
+        iArr3[0] = -16777216;
+        Lit7 = IntNum.make(iArr3);
+    }
+
+    public Screen2_CodeInspection() {
+        ModuleInfo.register(this);
+        frame frame2 = new frame();
+        frame2.$main = this;
+        this.get$Mnsimple$Mnname = new ModuleMethod(frame2, 1, Lit102, FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        this.onCreate = new ModuleMethod(frame2, 2, "onCreate", FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        this.android$Mnlog$Mnform = new ModuleMethod(frame2, 3, Lit103, FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        this.add$Mnto$Mnform$Mnenvironment = new ModuleMethod(frame2, 4, Lit104, 8194);
+        this.lookup$Mnin$Mnform$Mnenvironment = new ModuleMethod(frame2, 5, Lit105, 8193);
+        this.is$Mnbound$Mnin$Mnform$Mnenvironment = new ModuleMethod(frame2, 7, Lit106, FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        this.add$Mnto$Mnglobal$Mnvar$Mnenvironment = new ModuleMethod(frame2, 8, Lit107, 8194);
+        this.add$Mnto$Mnevents = new ModuleMethod(frame2, 9, Lit108, 8194);
+        this.add$Mnto$Mncomponents = new ModuleMethod(frame2, 10, Lit109, 16388);
+        this.add$Mnto$Mnglobal$Mnvars = new ModuleMethod(frame2, 11, Lit110, 8194);
+        this.add$Mnto$Mnform$Mndo$Mnafter$Mncreation = new ModuleMethod(frame2, 12, Lit111, FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        this.send$Mnerror = new ModuleMethod(frame2, 13, Lit112, FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        this.process$Mnexception = new ModuleMethod(frame2, 14, "process-exception", FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        this.dispatchEvent = new ModuleMethod(frame2, 15, Lit113, 16388);
+        this.dispatchGenericEvent = new ModuleMethod(frame2, 16, Lit114, 16388);
+        this.lookup$Mnhandler = new ModuleMethod(frame2, 17, Lit115, 8194);
+        ModuleMethod moduleMethod = new ModuleMethod(frame2, 18, (Object) null, 0);
+        moduleMethod.setProperty("source-location", "/tmp/runtime2301072664579690125.scm:622");
+        lambda$Fn1 = moduleMethod;
+        this.$define = new ModuleMethod(frame2, 19, "$define", 0);
+        lambda$Fn2 = new ModuleMethod(frame2, 20, (Object) null, 0);
+        lambda$Fn4 = new ModuleMethod(frame2, 21, (Object) null, 0);
+        lambda$Fn3 = new ModuleMethod(frame2, 22, (Object) null, 0);
+        lambda$Fn5 = new ModuleMethod(frame2, 23, (Object) null, 0);
+        this.Screen2_CodeInspection$BackPressed = new ModuleMethod(frame2, 24, Lit27, 0);
+        lambda$Fn6 = new ModuleMethod(frame2, 25, (Object) null, 0);
+        lambda$Fn7 = new ModuleMethod(frame2, 26, (Object) null, 0);
+        lambda$Fn8 = new ModuleMethod(frame2, 27, (Object) null, 0);
+        lambda$Fn9 = new ModuleMethod(frame2, 28, (Object) null, 0);
+        lambda$Fn10 = new ModuleMethod(frame2, 29, (Object) null, 0);
+        lambda$Fn11 = new ModuleMethod(frame2, 30, (Object) null, 0);
+        lambda$Fn12 = new ModuleMethod(frame2, 31, (Object) null, 0);
+        lambda$Fn13 = new ModuleMethod(frame2, 32, (Object) null, 0);
+        lambda$Fn14 = new ModuleMethod(frame2, 33, (Object) null, 0);
+        lambda$Fn15 = new ModuleMethod(frame2, 34, (Object) null, 0);
+        lambda$Fn16 = new ModuleMethod(frame2, 35, (Object) null, 0);
+        lambda$Fn17 = new ModuleMethod(frame2, 36, (Object) null, 0);
+        lambda$Fn18 = new ModuleMethod(frame2, 37, (Object) null, 0);
+        lambda$Fn19 = new ModuleMethod(frame2, 38, (Object) null, 0);
+        lambda$Fn20 = new ModuleMethod(frame2, 39, (Object) null, 0);
+        lambda$Fn21 = new ModuleMethod(frame2, 40, (Object) null, 0);
+        this.f22_$Click = new ModuleMethod(frame2, 41, Lit73, 0);
+        this.Notifier1$AfterChoosing = new ModuleMethod(frame2, 42, Lit79, FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        lambda$Fn22 = new ModuleMethod(frame2, 43, (Object) null, 0);
+        lambda$Fn23 = new ModuleMethod(frame2, 44, (Object) null, 0);
+        this.f16Firebase_$GotValue = new ModuleMethod(frame2, 45, Lit98, 8194);
+    }
+
+    public Object lookupInFormEnvironment(Symbol symbol) {
+        return lookupInFormEnvironment(symbol, Boolean.FALSE);
+    }
+
+    public void run() {
+        CallContext instance = CallContext.getInstance();
+        Consumer consumer = instance.consumer;
+        instance.consumer = VoidConsumer.instance;
+        try {
+            run(instance);
+            th = null;
+        } catch (Throwable th) {
+            th = th;
+        }
+        ModuleBody.runCleanup(instance, th, consumer);
+    }
+
+    public final void run(CallContext $ctx) {
+        String obj;
+        Consumer $result = $ctx.consumer;
+        runtime.$instance.run();
+        this.$Stdebug$Mnform$St = Boolean.FALSE;
+        this.form$Mnenvironment = Environment.make(misc.symbol$To$String(Lit0));
+        FString stringAppend = strings.stringAppend(misc.symbol$To$String(Lit0), "-global-vars");
+        if (stringAppend == null) {
+            obj = null;
+        } else {
+            obj = stringAppend.toString();
+        }
+        this.global$Mnvar$Mnenvironment = Environment.make(obj);
+        Screen2_CodeInspection = null;
+        this.form$Mnname$Mnsymbol = Lit0;
+        this.events$Mnto$Mnregister = LList.Empty;
+        this.components$Mnto$Mncreate = LList.Empty;
+        this.global$Mnvars$Mnto$Mncreate = LList.Empty;
+        this.form$Mndo$Mnafter$Mncreation = LList.Empty;
+        runtime.$instance.run();
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addGlobalVarToCurrentFormEnvironment(Lit3, lambda$Fn2), $result);
+        } else {
+            addToGlobalVars(Lit3, lambda$Fn3);
+        }
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit4, "전북과학고 학생을 가리기 위해 학생용 코드를 입력합니다. 학생 여러분의 번거로움을 방지하기 위해 이 코드는 앱 첫 실행 시에만 입력합니다.", Lit5);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit6, Lit7, Lit8);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit9, Boolean.TRUE, Lit10);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit11, Lit12, Lit8);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit13, "DigitalPermission_Student", Lit5);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit14, "fade", Lit5);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit15, "fade", Lit5);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit16, Lit17, Lit8);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit18, Lit19, Lit8);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit20, Boolean.FALSE, Lit10);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit21, "Fixed", Lit5);
+            runtime.setAndCoerceProperty$Ex(Lit0, Lit22, "AppTheme.Light.DarkActionBar", Lit5);
+            Values.writeValues(runtime.setAndCoerceProperty$Ex(Lit0, Lit23, "전북과학고 학생용 코드 입력", Lit5), $result);
+        } else {
+            addToFormDoAfterCreation(new Promise(lambda$Fn5));
+        }
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            runtime.addToCurrentFormEnvironment(Lit27, this.Screen2_CodeInspection$BackPressed);
+        } else {
+            addToFormEnvironment(Lit27, this.Screen2_CodeInspection$BackPressed);
+        }
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            EventDispatcher.registerEventForDelegation((HandlesEventDispatching) runtime.$Stthis$Mnform$St, "Screen2_CodeInspection", "BackPressed");
+        } else {
+            addToEvents(Lit0, Lit28);
+        }
+        this.HorizontalArrangement1 = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit0, Lit29, Lit30, lambda$Fn6), $result);
+        } else {
+            addToComponents(Lit0, Lit33, Lit30, lambda$Fn7);
+        }
+        this.Image1 = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit0, Lit34, Lit35, lambda$Fn8), $result);
+        } else {
+            addToComponents(Lit0, Lit40, Lit35, lambda$Fn9);
+        }
+        this.Image2 = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit0, Lit41, Lit42, lambda$Fn10), $result);
+        } else {
+            addToComponents(Lit0, Lit44, Lit42, lambda$Fn11);
+        }
+        this.HorizontalArrangement2 = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit0, Lit45, Lit46, lambda$Fn12), $result);
+        } else {
+            addToComponents(Lit0, Lit48, Lit46, lambda$Fn13);
+        }
+        this.f181 = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit0, Lit49, Lit50, lambda$Fn14), $result);
+        } else {
+            addToComponents(Lit0, Lit54, Lit50, lambda$Fn15);
+        }
+        this.f20__ = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit50, Lit55, Lit56, lambda$Fn16), $result);
+        } else {
+            addToComponents(Lit50, Lit58, Lit56, lambda$Fn17);
+        }
+        this.f19 = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit50, Lit59, Lit60, lambda$Fn18), $result);
+        } else {
+            addToComponents(Lit50, Lit64, Lit60, lambda$Fn19);
+        }
+        this.f21_ = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit50, Lit65, Lit66, lambda$Fn20), $result);
+        } else {
+            addToComponents(Lit50, Lit67, Lit66, lambda$Fn21);
+        }
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            runtime.addToCurrentFormEnvironment(Lit73, this.f22_$Click);
+        } else {
+            addToFormEnvironment(Lit73, this.f22_$Click);
+        }
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            EventDispatcher.registerEventForDelegation((HandlesEventDispatching) runtime.$Stthis$Mnform$St, "확인_버튼", "Click");
+        } else {
+            addToEvents(Lit66, Lit74);
+        }
+        this.Notifier1 = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit0, Lit75, Lit24, Boolean.FALSE), $result);
+        } else {
+            addToComponents(Lit0, Lit76, Lit24, Boolean.FALSE);
+        }
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            runtime.addToCurrentFormEnvironment(Lit79, this.Notifier1$AfterChoosing);
+        } else {
+            addToFormEnvironment(Lit79, this.Notifier1$AfterChoosing);
+        }
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            EventDispatcher.registerEventForDelegation((HandlesEventDispatching) runtime.$Stthis$Mnform$St, "Notifier1", "AfterChoosing");
+        } else {
+            addToEvents(Lit24, Lit80);
+        }
+        this.f15Firebase_ = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit0, Lit81, Lit70, lambda$Fn22), $result);
+        } else {
+            addToComponents(Lit0, Lit87, Lit70, lambda$Fn23);
+        }
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            runtime.addToCurrentFormEnvironment(Lit98, this.f16Firebase_$GotValue);
+        } else {
+            addToFormEnvironment(Lit98, this.f16Firebase_$GotValue);
+        }
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            EventDispatcher.registerEventForDelegation((HandlesEventDispatching) runtime.$Stthis$Mnform$St, "Firebase_코드확인", "GotValue");
+        } else {
+            addToEvents(Lit70, Lit99);
+        }
+        this.f17TinyDB_ = null;
+        if (runtime.$Stthis$Mnis$Mnthe$Mnrepl$St != Boolean.FALSE) {
+            Values.writeValues(runtime.addComponentWithinRepl(Lit0, Lit100, Lit90, Boolean.FALSE), $result);
+        } else {
+            addToComponents(Lit0, Lit101, Lit90, Boolean.FALSE);
+        }
+        runtime.initRuntime();
+    }
+
+    /* compiled from: Screen2_CodeInspection.yail */
+    public class frame extends ModuleBody {
+        Screen2_CodeInspection $main;
+
+        public Object apply0(ModuleMethod moduleMethod) {
+            switch (moduleMethod.selector) {
+                case 18:
+                    return Screen2_CodeInspection.lambda2();
+                case 19:
+                    this.$main.$define();
+                    return Values.empty;
+                case 20:
+                    return Screen2_CodeInspection.lambda3();
+                case 21:
+                    return Screen2_CodeInspection.lambda5();
+                case 22:
+                    return Screen2_CodeInspection.lambda4();
+                case 23:
+                    return Screen2_CodeInspection.lambda6();
+                case 24:
+                    return this.$main.Screen2_CodeInspection$BackPressed();
+                case 25:
+                    return Screen2_CodeInspection.lambda7();
+                case 26:
+                    return Screen2_CodeInspection.lambda8();
+                case 27:
+                    return Screen2_CodeInspection.lambda9();
+                case 28:
+                    return Screen2_CodeInspection.lambda10();
+                case 29:
+                    return Screen2_CodeInspection.lambda11();
+                case 30:
+                    return Screen2_CodeInspection.lambda12();
+                case 31:
+                    return Screen2_CodeInspection.lambda13();
+                case 32:
+                    return Screen2_CodeInspection.lambda14();
+                case 33:
+                    return Screen2_CodeInspection.lambda15();
+                case 34:
+                    return Screen2_CodeInspection.lambda16();
+                case 35:
+                    return Screen2_CodeInspection.lambda17();
+                case 36:
+                    return Screen2_CodeInspection.lambda18();
+                case 37:
+                    return Screen2_CodeInspection.lambda19();
+                case 38:
+                    return Screen2_CodeInspection.lambda20();
+                case 39:
+                    return Screen2_CodeInspection.lambda21();
+                case 40:
+                    return Screen2_CodeInspection.lambda22();
+                case 41:
+                    return this.$main.m7_$Click();
+                case 43:
+                    return Screen2_CodeInspection.lambda23();
+                case 44:
+                    return Screen2_CodeInspection.lambda24();
+                default:
+                    return super.apply0(moduleMethod);
+            }
+        }
+
+        public int match0(ModuleMethod moduleMethod, CallContext callContext) {
+            switch (moduleMethod.selector) {
+                case 18:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 19:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 20:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 21:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 22:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 23:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 24:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 25:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 26:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 27:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 28:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 29:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 30:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 31:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 32:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 33:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 34:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 35:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 36:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 37:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 38:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 39:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 40:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 41:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 43:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                case 44:
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 0;
+                    return 0;
+                default:
+                    return super.match0(moduleMethod, callContext);
+            }
+        }
+
+        public int match1(ModuleMethod moduleMethod, Object obj, CallContext callContext) {
+            switch (moduleMethod.selector) {
+                case 1:
+                    callContext.value1 = obj;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 1;
+                    return 0;
+                case 2:
+                    if (!(obj instanceof Screen2_CodeInspection)) {
+                        return -786431;
+                    }
+                    callContext.value1 = obj;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 1;
+                    return 0;
+                case 3:
+                    callContext.value1 = obj;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 1;
+                    return 0;
+                case 5:
+                    if (!(obj instanceof Symbol)) {
+                        return -786431;
+                    }
+                    callContext.value1 = obj;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 1;
+                    return 0;
+                case 7:
+                    if (!(obj instanceof Symbol)) {
+                        return -786431;
+                    }
+                    callContext.value1 = obj;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 1;
+                    return 0;
+                case 12:
+                    callContext.value1 = obj;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 1;
+                    return 0;
+                case 13:
+                    callContext.value1 = obj;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 1;
+                    return 0;
+                case 14:
+                    if (!(obj instanceof Screen2_CodeInspection)) {
+                        return -786431;
+                    }
+                    callContext.value1 = obj;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 1;
+                    return 0;
+                case 42:
+                    callContext.value1 = obj;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 1;
+                    return 0;
+                default:
+                    return super.match1(moduleMethod, obj, callContext);
+            }
+        }
+
+        public int match2(ModuleMethod moduleMethod, Object obj, Object obj2, CallContext callContext) {
+            switch (moduleMethod.selector) {
+                case 4:
+                    if (!(obj instanceof Symbol)) {
+                        return -786431;
+                    }
+                    callContext.value1 = obj;
+                    callContext.value2 = obj2;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 2;
+                    return 0;
+                case 5:
+                    if (!(obj instanceof Symbol)) {
+                        return -786431;
+                    }
+                    callContext.value1 = obj;
+                    callContext.value2 = obj2;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 2;
+                    return 0;
+                case 8:
+                    if (!(obj instanceof Symbol)) {
+                        return -786431;
+                    }
+                    callContext.value1 = obj;
+                    callContext.value2 = obj2;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 2;
+                    return 0;
+                case 9:
+                    callContext.value1 = obj;
+                    callContext.value2 = obj2;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 2;
+                    return 0;
+                case 11:
+                    callContext.value1 = obj;
+                    callContext.value2 = obj2;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 2;
+                    return 0;
+                case 17:
+                    callContext.value1 = obj;
+                    callContext.value2 = obj2;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 2;
+                    return 0;
+                case 45:
+                    callContext.value1 = obj;
+                    callContext.value2 = obj2;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 2;
+                    return 0;
+                default:
+                    return super.match2(moduleMethod, obj, obj2, callContext);
+            }
+        }
+
+        public int match4(ModuleMethod moduleMethod, Object obj, Object obj2, Object obj3, Object obj4, CallContext callContext) {
+            switch (moduleMethod.selector) {
+                case 10:
+                    callContext.value1 = obj;
+                    callContext.value2 = obj2;
+                    callContext.value3 = obj3;
+                    callContext.value4 = obj4;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 4;
+                    return 0;
+                case 15:
+                    if (!(obj instanceof Screen2_CodeInspection)) {
+                        return -786431;
+                    }
+                    callContext.value1 = obj;
+                    if (!(obj2 instanceof Component)) {
+                        return -786430;
+                    }
+                    callContext.value2 = obj2;
+                    if (!(obj3 instanceof String)) {
+                        return -786429;
+                    }
+                    callContext.value3 = obj3;
+                    if (!(obj4 instanceof String)) {
+                        return -786428;
+                    }
+                    callContext.value4 = obj4;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 4;
+                    return 0;
+                case 16:
+                    if (!(obj instanceof Screen2_CodeInspection)) {
+                        return -786431;
+                    }
+                    callContext.value1 = obj;
+                    if (!(obj2 instanceof Component)) {
+                        return -786430;
+                    }
+                    callContext.value2 = obj2;
+                    if (!(obj3 instanceof String)) {
+                        return -786429;
+                    }
+                    callContext.value3 = obj3;
+                    callContext.value4 = obj4;
+                    callContext.proc = moduleMethod;
+                    callContext.pc = 4;
+                    return 0;
+                default:
+                    return super.match4(moduleMethod, obj, obj2, obj3, obj4, callContext);
+            }
+        }
+
+        public Object apply1(ModuleMethod moduleMethod, Object obj) {
+            switch (moduleMethod.selector) {
+                case 1:
+                    return this.$main.getSimpleName(obj);
+                case 2:
+                    try {
+                        this.$main.onCreate((Bundle) obj);
+                        return Values.empty;
+                    } catch (ClassCastException e) {
+                        throw new WrongType(e, "onCreate", 1, obj);
+                    }
+                case 3:
+                    this.$main.androidLogForm(obj);
+                    return Values.empty;
+                case 5:
+                    try {
+                        return this.$main.lookupInFormEnvironment((Symbol) obj);
+                    } catch (ClassCastException e2) {
+                        throw new WrongType(e2, "lookup-in-form-environment", 1, obj);
+                    }
+                case 7:
+                    try {
+                        return this.$main.isBoundInFormEnvironment((Symbol) obj) ? Boolean.TRUE : Boolean.FALSE;
+                    } catch (ClassCastException e3) {
+                        throw new WrongType(e3, "is-bound-in-form-environment", 1, obj);
+                    }
+                case 12:
+                    this.$main.addToFormDoAfterCreation(obj);
+                    return Values.empty;
+                case 13:
+                    this.$main.sendError(obj);
+                    return Values.empty;
+                case 14:
+                    this.$main.processException(obj);
+                    return Values.empty;
+                case 42:
+                    return this.$main.Notifier1$AfterChoosing(obj);
+                default:
+                    return super.apply1(moduleMethod, obj);
+            }
+        }
+
+        public Object apply4(ModuleMethod moduleMethod, Object obj, Object obj2, Object obj3, Object obj4) {
+            boolean z = true;
+            switch (moduleMethod.selector) {
+                case 10:
+                    this.$main.addToComponents(obj, obj2, obj3, obj4);
+                    return Values.empty;
+                case 15:
+                    try {
+                        try {
+                            try {
+                                try {
+                                    return this.$main.dispatchEvent((Component) obj, (String) obj2, (String) obj3, (Object[]) obj4) ? Boolean.TRUE : Boolean.FALSE;
+                                } catch (ClassCastException e) {
+                                    throw new WrongType(e, "dispatchEvent", 4, obj4);
+                                }
+                            } catch (ClassCastException e2) {
+                                throw new WrongType(e2, "dispatchEvent", 3, obj3);
+                            }
+                        } catch (ClassCastException e3) {
+                            throw new WrongType(e3, "dispatchEvent", 2, obj2);
+                        }
+                    } catch (ClassCastException e4) {
+                        throw new WrongType(e4, "dispatchEvent", 1, obj);
+                    }
+                case 16:
+                    Screen2_CodeInspection screen2_CodeInspection = this.$main;
+                    try {
+                        Component component = (Component) obj;
+                        try {
+                            String str = (String) obj2;
+                            try {
+                                if (obj3 == Boolean.FALSE) {
+                                    z = false;
+                                }
+                                try {
+                                    screen2_CodeInspection.dispatchGenericEvent(component, str, z, (Object[]) obj4);
+                                    return Values.empty;
+                                } catch (ClassCastException e5) {
+                                    throw new WrongType(e5, "dispatchGenericEvent", 4, obj4);
+                                }
+                            } catch (ClassCastException e6) {
+                                throw new WrongType(e6, "dispatchGenericEvent", 3, obj3);
+                            }
+                        } catch (ClassCastException e7) {
+                            throw new WrongType(e7, "dispatchGenericEvent", 2, obj2);
+                        }
+                    } catch (ClassCastException e8) {
+                        throw new WrongType(e8, "dispatchGenericEvent", 1, obj);
+                    }
+                default:
+                    return super.apply4(moduleMethod, obj, obj2, obj3, obj4);
+            }
+        }
+
+        public Object apply2(ModuleMethod moduleMethod, Object obj, Object obj2) {
+            switch (moduleMethod.selector) {
+                case 4:
+                    try {
+                        this.$main.addToFormEnvironment((Symbol) obj, obj2);
+                        return Values.empty;
+                    } catch (ClassCastException e) {
+                        throw new WrongType(e, "add-to-form-environment", 1, obj);
+                    }
+                case 5:
+                    try {
+                        return this.$main.lookupInFormEnvironment((Symbol) obj, obj2);
+                    } catch (ClassCastException e2) {
+                        throw new WrongType(e2, "lookup-in-form-environment", 1, obj);
+                    }
+                case 8:
+                    try {
+                        this.$main.addToGlobalVarEnvironment((Symbol) obj, obj2);
+                        return Values.empty;
+                    } catch (ClassCastException e3) {
+                        throw new WrongType(e3, "add-to-global-var-environment", 1, obj);
+                    }
+                case 9:
+                    this.$main.addToEvents(obj, obj2);
+                    return Values.empty;
+                case 11:
+                    this.$main.addToGlobalVars(obj, obj2);
+                    return Values.empty;
+                case 17:
+                    return this.$main.lookupHandler(obj, obj2);
+                case 45:
+                    return this.$main.m6Firebase_$GotValue(obj, obj2);
+                default:
+                    return super.apply2(moduleMethod, obj, obj2);
+            }
+        }
+    }
+
+    static Object lambda3() {
+        return runtime.callYailPrimitive(runtime.close$Mnscreen, LList.Empty, LList.Empty, "close screen");
+    }
+
+    static Procedure lambda4() {
+        return lambda$Fn4;
+    }
+
+    static Object lambda5() {
+        return runtime.callYailPrimitive(runtime.close$Mnscreen, LList.Empty, LList.Empty, "close screen");
+    }
+
+    static Object lambda6() {
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit4, "전북과학고 학생을 가리기 위해 학생용 코드를 입력합니다. 학생 여러분의 번거로움을 방지하기 위해 이 코드는 앱 첫 실행 시에만 입력합니다.", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit6, Lit7, Lit8);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit9, Boolean.TRUE, Lit10);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit11, Lit12, Lit8);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit13, "DigitalPermission_Student", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit14, "fade", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit15, "fade", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit16, Lit17, Lit8);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit18, Lit19, Lit8);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit20, Boolean.FALSE, Lit10);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit21, "Fixed", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit0, Lit22, "AppTheme.Light.DarkActionBar", Lit5);
+        return runtime.setAndCoerceProperty$Ex(Lit0, Lit23, "전북과학고 학생용 코드 입력", Lit5);
+    }
+
+    public Object Screen2_CodeInspection$BackPressed() {
+        runtime.setThisForm();
+        SimpleSymbol simpleSymbol = Lit24;
+        SimpleSymbol simpleSymbol2 = Lit25;
+        Pair list1 = LList.list1("앱을 종료하시겠습니까?");
+        LList.chain4(list1, "앱 종료", "예", "아니오", Boolean.FALSE);
+        return runtime.callComponentMethod(simpleSymbol, simpleSymbol2, list1, Lit26);
+    }
+
+    static Object lambda7() {
+        return runtime.setAndCoerceProperty$Ex(Lit30, Lit31, Lit32, Lit8);
+    }
+
+    static Object lambda8() {
+        return runtime.setAndCoerceProperty$Ex(Lit30, Lit31, Lit32, Lit8);
+    }
+
+    static Object lambda10() {
+        runtime.setAndCoerceProperty$Ex(Lit35, Lit31, Lit36, Lit8);
+        runtime.setAndCoerceProperty$Ex(Lit35, Lit37, "CodeEnter.png", Lit5);
+        return runtime.setAndCoerceProperty$Ex(Lit35, Lit38, Lit39, Lit8);
+    }
+
+    static Object lambda9() {
+        runtime.setAndCoerceProperty$Ex(Lit35, Lit31, Lit36, Lit8);
+        runtime.setAndCoerceProperty$Ex(Lit35, Lit37, "CodeEnter.png", Lit5);
+        return runtime.setAndCoerceProperty$Ex(Lit35, Lit38, Lit39, Lit8);
+    }
+
+    static Object lambda11() {
+        runtime.setAndCoerceProperty$Ex(Lit42, Lit37, "line.png", Lit5);
+        return runtime.setAndCoerceProperty$Ex(Lit42, Lit38, Lit43, Lit8);
+    }
+
+    static Object lambda12() {
+        runtime.setAndCoerceProperty$Ex(Lit42, Lit37, "line.png", Lit5);
+        return runtime.setAndCoerceProperty$Ex(Lit42, Lit38, Lit43, Lit8);
+    }
+
+    static Object lambda13() {
+        return runtime.setAndCoerceProperty$Ex(Lit46, Lit31, Lit47, Lit8);
+    }
+
+    static Object lambda14() {
+        return runtime.setAndCoerceProperty$Ex(Lit46, Lit31, Lit47, Lit8);
+    }
+
+    static Object lambda15() {
+        runtime.setAndCoerceProperty$Ex(Lit50, Lit11, Lit12, Lit8);
+        runtime.setAndCoerceProperty$Ex(Lit50, Lit51, Lit52, Lit8);
+        return runtime.setAndCoerceProperty$Ex(Lit50, Lit31, Lit53, Lit8);
+    }
+
+    static Object lambda16() {
+        runtime.setAndCoerceProperty$Ex(Lit50, Lit11, Lit12, Lit8);
+        runtime.setAndCoerceProperty$Ex(Lit50, Lit51, Lit52, Lit8);
+        return runtime.setAndCoerceProperty$Ex(Lit50, Lit31, Lit53, Lit8);
+    }
+
+    static Object lambda17() {
+        return runtime.setAndCoerceProperty$Ex(Lit56, Lit57, "code password", Lit5);
+    }
+
+    static Object lambda18() {
+        return runtime.setAndCoerceProperty$Ex(Lit56, Lit57, "code password", Lit5);
+    }
+
+    static Object lambda19() {
+        runtime.setAndCoerceProperty$Ex(Lit60, Lit61, "여", Lit5);
+        return runtime.setAndCoerceProperty$Ex(Lit60, Lit62, Lit63, Lit8);
+    }
+
+    static Object lambda20() {
+        runtime.setAndCoerceProperty$Ex(Lit60, Lit61, "여", Lit5);
+        return runtime.setAndCoerceProperty$Ex(Lit60, Lit62, Lit63, Lit8);
+    }
+
+    static Object lambda21() {
+        return runtime.setAndCoerceProperty$Ex(Lit66, Lit61, "확인", Lit5);
+    }
+
+    static Object lambda22() {
+        return runtime.setAndCoerceProperty$Ex(Lit66, Lit61, "확인", Lit5);
+    }
+
+    /* renamed from: 확인_버튼$Click  reason: contains not printable characters */
+    public Object m7_$Click() {
+        runtime.setThisForm();
+        runtime.callComponentMethod(Lit24, Lit68, LList.list2("앱 확인 코드 판별 중..", "코드 확인"), Lit69);
+        return runtime.callComponentMethod(Lit70, Lit71, LList.list2("학생코드", ""), Lit72);
+    }
+
+    public Object Notifier1$AfterChoosing(Object $choice) {
+        Object $choice2 = runtime.sanitizeComponentData($choice);
+        runtime.setThisForm();
+        ModuleMethod moduleMethod = runtime.yail$Mnequal$Qu;
+        if ($choice2 instanceof Package) {
+            $choice2 = runtime.signalRuntimeError(strings.stringAppend("The variable ", runtime.getDisplayRepresentation(Lit77), " is not bound in the current context"), "Unbound Variable");
+        }
+        return runtime.callYailPrimitive(moduleMethod, LList.list2($choice2, "예"), Lit78, "=") != Boolean.FALSE ? runtime.callYailPrimitive(runtime.close$Mnapplication, LList.Empty, LList.Empty, "close application") : Values.empty;
+    }
+
+    static Object lambda23() {
+        runtime.setAndCoerceProperty$Ex(Lit70, Lit82, "https://dazzling-fire-7140.firebaseio.com/", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit70, Lit83, "jbshcrack@gmail:com/", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit70, Lit84, "AIzaSyB2Y8bkJyFdh6fQGO2usiZiKIGwqFSaBzI", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit70, Lit85, "https://day-n-code.firebaseio.com/", Lit5);
+        return runtime.setAndCoerceProperty$Ex(Lit70, Lit86, "jbshCODE", Lit5);
+    }
+
+    static Object lambda24() {
+        runtime.setAndCoerceProperty$Ex(Lit70, Lit82, "https://dazzling-fire-7140.firebaseio.com/", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit70, Lit83, "jbshcrack@gmail:com/", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit70, Lit84, "AIzaSyB2Y8bkJyFdh6fQGO2usiZiKIGwqFSaBzI", Lit5);
+        runtime.setAndCoerceProperty$Ex(Lit70, Lit85, "https://day-n-code.firebaseio.com/", Lit5);
+        return runtime.setAndCoerceProperty$Ex(Lit70, Lit86, "jbshCODE", Lit5);
+    }
+
+    /* renamed from: Firebase_코드확인$GotValue  reason: contains not printable characters */
+    public Object m6Firebase_$GotValue(Object $tag, Object $value) {
+        runtime.sanitizeComponentData($tag);
+        Object $value2 = runtime.sanitizeComponentData($value);
+        runtime.setThisForm();
+        ModuleMethod moduleMethod = runtime.yail$Mnequal$Qu;
+        Object apply2 = runtime.get$Mnproperty.apply2(Lit56, Lit61);
+        if ($value2 instanceof Package) {
+            $value2 = runtime.signalRuntimeError(strings.stringAppend("The variable ", runtime.getDisplayRepresentation(Lit88), " is not bound in the current context"), "Unbound Variable");
+        }
+        if (runtime.callYailPrimitive(moduleMethod, LList.list2(apply2, $value2), Lit89, "=") != Boolean.FALSE) {
+            runtime.callComponentMethod(Lit90, Lit91, LList.list2("studentcode", runtime.get$Mnproperty.apply2(Lit56, Lit61)), Lit92);
+            runtime.callComponentMethod(Lit24, Lit93, LList.Empty, LList.Empty);
+            runtime.callComponentMethod(Lit0, Lit94, LList.Empty, LList.Empty);
+            Scheme.applyToArgs.apply1(runtime.lookupGlobalVarInCurrentFormEnvironment(Lit3, runtime.$Stthe$Mnnull$Mnvalue$St));
+            return runtime.callYailPrimitive(runtime.open$Mnanother$Mnscreen, LList.list1("Screen4_1_StudentidInput"), Lit95, "open another screen");
+        }
+        runtime.callComponentMethod(Lit24, Lit93, LList.Empty, LList.Empty);
+        runtime.setAndCoerceProperty$Ex(Lit56, Lit61, "", Lit5);
+        return runtime.callComponentMethod(Lit24, Lit96, LList.list1("잘못된 입력입니다."), Lit97);
+    }
+
+    public String getSimpleName(Object object) {
+        return object.getClass().getSimpleName();
+    }
+
+    public void onCreate(Bundle icicle) {
+        AppInventorCompatActivity.setClassicModeFromYail(false);
+        super.onCreate(icicle);
+    }
+
+    public void androidLogForm(Object message) {
+    }
+
+    public void addToFormEnvironment(Symbol name, Object object) {
+        androidLogForm(Format.formatToString(0, "Adding ~A to env ~A with value ~A", name, this.form$Mnenvironment, object));
+        this.form$Mnenvironment.put(name, object);
+    }
+
+    public Object lookupInFormEnvironment(Symbol name, Object default$Mnvalue) {
+        boolean x = ((this.form$Mnenvironment == null ? 1 : 0) + 1) & true;
+        if (x) {
+            if (!this.form$Mnenvironment.isBound(name)) {
+                return default$Mnvalue;
+            }
+        } else if (!x) {
+            return default$Mnvalue;
+        }
+        return this.form$Mnenvironment.get(name);
+    }
+
+    public boolean isBoundInFormEnvironment(Symbol name) {
+        return this.form$Mnenvironment.isBound(name);
+    }
+
+    public void addToGlobalVarEnvironment(Symbol name, Object object) {
+        androidLogForm(Format.formatToString(0, "Adding ~A to env ~A with value ~A", name, this.global$Mnvar$Mnenvironment, object));
+        this.global$Mnvar$Mnenvironment.put(name, object);
+    }
+
+    public void addToEvents(Object component$Mnname, Object event$Mnname) {
+        this.events$Mnto$Mnregister = lists.cons(lists.cons(component$Mnname, event$Mnname), this.events$Mnto$Mnregister);
+    }
+
+    public void addToComponents(Object container$Mnname, Object component$Mntype, Object component$Mnname, Object init$Mnthunk) {
+        this.components$Mnto$Mncreate = lists.cons(LList.list4(container$Mnname, component$Mntype, component$Mnname, init$Mnthunk), this.components$Mnto$Mncreate);
+    }
+
+    public void addToGlobalVars(Object var, Object val$Mnthunk) {
+        this.global$Mnvars$Mnto$Mncreate = lists.cons(LList.list2(var, val$Mnthunk), this.global$Mnvars$Mnto$Mncreate);
+    }
+
+    public void addToFormDoAfterCreation(Object thunk) {
+        this.form$Mndo$Mnafter$Mncreation = lists.cons(thunk, this.form$Mndo$Mnafter$Mncreation);
+    }
+
+    public void sendError(Object error) {
+        RetValManager.sendError(error == null ? null : error.toString());
+    }
+
+    public void processException(Object ex) {
+        Object apply1 = Scheme.applyToArgs.apply1(GetNamedPart.getNamedPart.apply2(ex, Lit1));
+        RuntimeErrorAlert.alert(this, apply1 == null ? null : apply1.toString(), ex instanceof YailRuntimeError ? ((YailRuntimeError) ex).getErrorType() : "Runtime Error", "End Application");
+    }
+
+    public boolean dispatchEvent(Component componentObject, String registeredComponentName, String eventName, Object[] args) {
+        boolean x;
+        SimpleSymbol registeredObject = misc.string$To$Symbol(registeredComponentName);
+        if (!isBoundInFormEnvironment(registeredObject)) {
+            EventDispatcher.unregisterEventForDelegation(this, registeredComponentName, eventName);
+            return false;
+        } else if (lookupInFormEnvironment(registeredObject) != componentObject) {
+            return false;
+        } else {
+            try {
+                Scheme.apply.apply2(lookupHandler(registeredComponentName, eventName), LList.makeList(args, 0));
+                return true;
+            } catch (PermissionException exception) {
+                exception.printStackTrace();
+                if (this == componentObject) {
+                    x = true;
+                } else {
+                    x = false;
+                }
+                if (!x ? x : IsEqual.apply(eventName, "PermissionNeeded")) {
+                    processException(exception);
+                } else {
+                    PermissionDenied(componentObject, eventName, exception.getPermissionNeeded());
+                }
+                return false;
+            } catch (Throwable exception2) {
+                androidLogForm(exception2.getMessage());
+                exception2.printStackTrace();
+                processException(exception2);
+                return false;
+            }
+        }
+    }
+
+    public void dispatchGenericEvent(Component componentObject, String eventName, boolean notAlreadyHandled, Object[] args) {
+        Boolean bool;
+        boolean x = true;
+        Object handler = lookupInFormEnvironment(misc.string$To$Symbol(strings.stringAppend("any$", getSimpleName(componentObject), "$", eventName)));
+        if (handler != Boolean.FALSE) {
+            try {
+                Apply apply = Scheme.apply;
+                if (notAlreadyHandled) {
+                    bool = Boolean.TRUE;
+                } else {
+                    bool = Boolean.FALSE;
+                }
+                apply.apply2(handler, lists.cons(componentObject, lists.cons(bool, LList.makeList(args, 0))));
+            } catch (PermissionException exception) {
+                exception.printStackTrace();
+                if (this != componentObject) {
+                    x = false;
+                }
+                if (!x ? x : IsEqual.apply(eventName, "PermissionNeeded")) {
+                    processException(exception);
+                } else {
+                    PermissionDenied(componentObject, eventName, exception.getPermissionNeeded());
+                }
+            } catch (Throwable exception2) {
+                androidLogForm(exception2.getMessage());
+                exception2.printStackTrace();
+                processException(exception2);
+            }
+        }
+    }
+
+    public Object lookupHandler(Object componentName, Object eventName) {
+        String str = null;
+        String obj = componentName == null ? null : componentName.toString();
+        if (eventName != null) {
+            str = eventName.toString();
+        }
+        return lookupInFormEnvironment(misc.string$To$Symbol(EventDispatcher.makeFullEventName(obj, str)));
+    }
+
+    public void $define() {
+        Object reverse;
+        Object obj;
+        Object reverse2;
+        Object obj2;
+        Object obj3;
+        Object var;
+        Object component$Mnname;
+        Object obj4;
+        Language.setDefaults(Scheme.getInstance());
+        try {
+            run();
+        } catch (Exception exception) {
+            androidLogForm(exception.getMessage());
+            processException(exception);
+        }
+        Screen2_CodeInspection = this;
+        addToFormEnvironment(Lit0, this);
+        Object obj5 = this.events$Mnto$Mnregister;
+        while (obj5 != LList.Empty) {
+            try {
+                Pair arg0 = (Pair) obj5;
+                Object event$Mninfo = arg0.getCar();
+                Object apply1 = lists.car.apply1(event$Mninfo);
+                String obj6 = apply1 == null ? null : apply1.toString();
+                Object apply12 = lists.cdr.apply1(event$Mninfo);
+                EventDispatcher.registerEventForDelegation(this, obj6, apply12 == null ? null : apply12.toString());
+                obj5 = arg0.getCdr();
+            } catch (ClassCastException e) {
+                throw new WrongType(e, "arg0", -2, obj5);
+            }
+        }
+        try {
+            LList components = lists.reverse(this.components$Mnto$Mncreate);
+            addToGlobalVars(Lit2, lambda$Fn1);
+            reverse = lists.reverse(this.form$Mndo$Mnafter$Mncreation);
+            while (reverse != LList.Empty) {
+                Pair arg02 = (Pair) reverse;
+                misc.force(arg02.getCar());
+                reverse = arg02.getCdr();
+            }
+            obj = components;
+            while (obj != LList.Empty) {
+                Pair arg03 = (Pair) obj;
+                Object component$Mninfo = arg03.getCar();
+                component$Mnname = lists.caddr.apply1(component$Mninfo);
+                lists.cadddr.apply1(component$Mninfo);
+                Object component$Mnobject = Invoke.make.apply2(lists.cadr.apply1(component$Mninfo), lookupInFormEnvironment((Symbol) lists.car.apply1(component$Mninfo)));
+                SlotSet.set$Mnfield$Ex.apply3(this, component$Mnname, component$Mnobject);
+                addToFormEnvironment((Symbol) component$Mnname, component$Mnobject);
+                obj = arg03.getCdr();
+            }
+            reverse2 = lists.reverse(this.global$Mnvars$Mnto$Mncreate);
+            while (reverse2 != LList.Empty) {
+                Pair arg04 = (Pair) reverse2;
+                Object var$Mnval = arg04.getCar();
+                var = lists.car.apply1(var$Mnval);
+                addToGlobalVarEnvironment((Symbol) var, Scheme.applyToArgs.apply1(lists.cadr.apply1(var$Mnval)));
+                reverse2 = arg04.getCdr();
+            }
+            LList component$Mndescriptors = components;
+            obj2 = component$Mndescriptors;
+            while (obj2 != LList.Empty) {
+                Pair arg05 = (Pair) obj2;
+                Object component$Mninfo2 = arg05.getCar();
+                lists.caddr.apply1(component$Mninfo2);
+                Object init$Mnthunk = lists.cadddr.apply1(component$Mninfo2);
+                if (init$Mnthunk != Boolean.FALSE) {
+                    Scheme.applyToArgs.apply1(init$Mnthunk);
+                }
+                obj2 = arg05.getCdr();
+            }
+            obj3 = component$Mndescriptors;
+            while (obj3 != LList.Empty) {
+                Pair arg06 = (Pair) obj3;
+                Object component$Mninfo3 = arg06.getCar();
+                Object component$Mnname2 = lists.caddr.apply1(component$Mninfo3);
+                lists.cadddr.apply1(component$Mninfo3);
+                callInitialize(SlotGet.field.apply2(this, component$Mnname2));
+                obj3 = arg06.getCdr();
+            }
+        } catch (ClassCastException e2) {
+            throw new WrongType(e2, "arg0", -2, obj3);
+        } catch (ClassCastException e3) {
+            throw new WrongType(e3, "arg0", -2, obj2);
+        } catch (ClassCastException e4) {
+            throw new WrongType(e4, "add-to-global-var-environment", 0, var);
+        } catch (ClassCastException e5) {
+            throw new WrongType(e5, "arg0", -2, reverse2);
+        } catch (ClassCastException e6) {
+            throw new WrongType(e6, "add-to-form-environment", 0, component$Mnname);
+        } catch (ClassCastException e7) {
+            throw new WrongType(e7, "lookup-in-form-environment", 0, obj4);
+        } catch (ClassCastException e8) {
+            throw new WrongType(e8, "arg0", -2, obj);
+        } catch (ClassCastException e9) {
+            throw new WrongType(e9, "arg0", -2, reverse);
+        } catch (YailRuntimeError exception2) {
+            processException(exception2);
+        }
+    }
+
+    public static SimpleSymbol lambda1symbolAppend$V(Object[] argsArray) {
+        LList symbols = LList.makeList(argsArray, 0);
+        Apply apply = Scheme.apply;
+        ModuleMethod moduleMethod = strings.string$Mnappend;
+        Object obj = LList.Empty;
+        LList lList = symbols;
+        while (lList != LList.Empty) {
+            try {
+                Pair arg0 = (Pair) lList;
+                Object arg02 = arg0.getCdr();
+                Object car = arg0.getCar();
+                try {
+                    obj = Pair.make(misc.symbol$To$String((Symbol) car), obj);
+                    lList = arg02;
+                } catch (ClassCastException e) {
+                    throw new WrongType(e, "symbol->string", 1, car);
+                }
+            } catch (ClassCastException e2) {
+                throw new WrongType(e2, "arg0", -2, lList);
+            }
+        }
+        Object apply2 = apply.apply2(moduleMethod, LList.reverseInPlace(obj));
+        try {
+            return misc.string$To$Symbol((CharSequence) apply2);
+        } catch (ClassCastException e3) {
+            throw new WrongType(e3, "string->symbol", 1, apply2);
+        }
+    }
+
+    static Object lambda2() {
+        return null;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

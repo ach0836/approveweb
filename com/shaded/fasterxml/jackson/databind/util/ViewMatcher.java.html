@@ -1,0 +1,82 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ViewMatcher.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ViewMatcher.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.databind.util;
+
+import java.io.Serializable;
+
+public abstract class ViewMatcher {
+    public abstract boolean isVisibleForView(Class<?> cls);
+
+    public static ViewMatcher construct(Class<?>[] clsArr) {
+        if (clsArr == null) {
+            return Empty.instance;
+        }
+        switch (clsArr.length) {
+            case 0:
+                return Empty.instance;
+            case 1:
+                return new Single(clsArr[0]);
+            default:
+                return new Multi(clsArr);
+        }
+    }
+
+    private static final class Empty extends ViewMatcher implements Serializable {
+        static final Empty instance = new Empty();
+        private static final long serialVersionUID = 1;
+
+        private Empty() {
+        }
+
+        public boolean isVisibleForView(Class<?> cls) {
+            return false;
+        }
+    }
+
+    private static final class Single extends ViewMatcher implements Serializable {
+        private static final long serialVersionUID = 1;
+        private final Class<?> _view;
+
+        public Single(Class<?> cls) {
+            this._view = cls;
+        }
+
+        public boolean isVisibleForView(Class<?> cls) {
+            return cls == this._view || this._view.isAssignableFrom(cls);
+        }
+    }
+
+    private static final class Multi extends ViewMatcher implements Serializable {
+        private static final long serialVersionUID = 1;
+        private final Class<?>[] _views;
+
+        public Multi(Class<?>[] clsArr) {
+            this._views = clsArr;
+        }
+
+        public boolean isVisibleForView(Class<?> cls) {
+            for (Class<?> cls2 : this._views) {
+                if (cls == cls2 || cls2.isAssignableFrom(cls)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

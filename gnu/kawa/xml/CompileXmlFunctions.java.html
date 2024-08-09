@@ -1,0 +1,47 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>CompileXmlFunctions.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>CompileXmlFunctions.java</h2>
+        <pre>package gnu.kawa.xml;
+
+import gnu.bytecode.Type;
+import gnu.expr.ApplyExp;
+import gnu.expr.Expression;
+import gnu.expr.InlineCalls;
+import gnu.expr.QuoteExp;
+import gnu.lists.NodePredicate;
+import gnu.mapping.Procedure;
+
+public class CompileXmlFunctions {
+    public static Expression validateApplyMakeUnescapedData(ApplyExp exp, InlineCalls visitor, Type required, Procedure proc) {
+        exp.visitArgs(visitor);
+        Expression[] args = exp.getArgs();
+        if (args.length != 1 || !(args[0] instanceof QuoteExp)) {
+            return exp;
+        }
+        return new QuoteExp(((MakeUnescapedData) proc).apply1(((QuoteExp) args[0]).getValue()));
+    }
+
+    public static Expression validateApplyTreeScanner(ApplyExp exp, InlineCalls visitor, Type required, Procedure proc) {
+        exp.visitArgs(visitor);
+        NodePredicate type = ((TreeScanner) proc).type;
+        if (exp.getTypeRaw() == null && (type instanceof Type)) {
+            exp.setType(NodeSetType.getInstance((Type) type));
+        }
+        return exp;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

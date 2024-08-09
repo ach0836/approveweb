@@ -1,0 +1,56 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PairClassType.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>PairClassType.java</h2>
+        <pre>package gnu.expr;
+
+import gnu.bytecode.ClassType;
+import gnu.bytecode.Type;
+
+public class PairClassType extends ClassType {
+    public ClassType instanceType;
+    Object staticLink;
+
+    public PairClassType() {
+    }
+
+    PairClassType(Class reflectInterface, Class reflectInstanceClass) {
+        super(reflectInterface.getName());
+        setExisting(true);
+        this.reflectClass = reflectInterface;
+        Type.registerTypeForClass(reflectInterface, this);
+        this.instanceType = (ClassType) Type.make(reflectInstanceClass);
+    }
+
+    public static PairClassType make(Class reflectInterface, Class reflectInstanceClass) {
+        return new PairClassType(reflectInterface, reflectInstanceClass);
+    }
+
+    public static PairClassType make(Class reflectInterface, Class reflectInstanceClass, Object staticLink2) {
+        PairClassType type = new PairClassType(reflectInterface, reflectInstanceClass);
+        type.staticLink = staticLink2;
+        return type;
+    }
+
+    public Object getStaticLink() {
+        return this.staticLink;
+    }
+
+    public static Object extractStaticLink(ClassType type) {
+        return ((PairClassType) type).staticLink;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

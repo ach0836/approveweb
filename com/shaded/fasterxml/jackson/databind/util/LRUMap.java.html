@@ -1,0 +1,55 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>LRUMap.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>LRUMap.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.databind.util;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class LRUMap<K, V> extends LinkedHashMap<K, V> implements Serializable {
+    private static final long serialVersionUID = 1;
+    protected transient int _jdkSerializeMaxEntries;
+    protected final int _maxEntries;
+
+    public LRUMap(int i, int i2) {
+        super(i, 0.8f, true);
+        this._maxEntries = i2;
+    }
+
+    /* access modifiers changed from: protected */
+    public boolean removeEldestEntry(Map.Entry<K, V> entry) {
+        return size() > this._maxEntries;
+    }
+
+    private void readObject(ObjectInputStream objectInputStream) throws IOException {
+        this._jdkSerializeMaxEntries = objectInputStream.readInt();
+    }
+
+    private void writeObject(ObjectOutputStream objectOutputStream) throws IOException {
+        objectOutputStream.writeInt(this._jdkSerializeMaxEntries);
+    }
+
+    /* access modifiers changed from: protected */
+    public Object readResolve() {
+        return new LRUMap(this._jdkSerializeMaxEntries, this._jdkSerializeMaxEntries);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

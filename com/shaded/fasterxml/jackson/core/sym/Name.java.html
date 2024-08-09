@@ -1,0 +1,51 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Name.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>Name.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.core.sym;
+
+public abstract class Name {
+    protected final int _hashCode;
+    protected final String _name;
+
+    public abstract boolean equals(int i);
+
+    public abstract boolean equals(int i, int i2);
+
+    public abstract boolean equals(int[] iArr, int i);
+
+    protected Name(String str, int i) {
+        this._name = str;
+        this._hashCode = i;
+    }
+
+    public String getName() {
+        return this._name;
+    }
+
+    public String toString() {
+        return this._name;
+    }
+
+    public final int hashCode() {
+        return this._hashCode;
+    }
+
+    public boolean equals(Object obj) {
+        return obj == this;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

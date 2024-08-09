@@ -1,0 +1,37 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>RequestDate.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>RequestDate.java</h2>
+        <pre>package org.shaded.apache.http.protocol;
+
+import java.io.IOException;
+import org.shaded.apache.http.HttpEntityEnclosingRequest;
+import org.shaded.apache.http.HttpException;
+import org.shaded.apache.http.HttpRequest;
+import org.shaded.apache.http.HttpRequestInterceptor;
+
+public class RequestDate implements HttpRequestInterceptor {
+    private static final HttpDateGenerator DATE_GENERATOR = new HttpDateGenerator();
+
+    public void process(HttpRequest request, HttpContext context) throws HttpException, IOException {
+        if (request == null) {
+            throw new IllegalArgumentException("HTTP request may not be null.");
+        } else if ((request instanceof HttpEntityEnclosingRequest) && !request.containsHeader(HTTP.DATE_HEADER)) {
+            request.setHeader(HTTP.DATE_HEADER, DATE_GENERATOR.getCurrentDate());
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

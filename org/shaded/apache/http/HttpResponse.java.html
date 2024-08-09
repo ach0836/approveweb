@@ -1,0 +1,43 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HttpResponse.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>HttpResponse.java</h2>
+        <pre>package org.shaded.apache.http;
+
+import java.util.Locale;
+
+public interface HttpResponse extends HttpMessage {
+    HttpEntity getEntity();
+
+    Locale getLocale();
+
+    StatusLine getStatusLine();
+
+    void setEntity(HttpEntity httpEntity);
+
+    void setLocale(Locale locale);
+
+    void setReasonPhrase(String str) throws IllegalStateException;
+
+    void setStatusCode(int i) throws IllegalStateException;
+
+    void setStatusLine(ProtocolVersion protocolVersion, int i);
+
+    void setStatusLine(ProtocolVersion protocolVersion, int i, String str);
+
+    void setStatusLine(StatusLine statusLine);
+}
+</pre>
+    </body>
+    </html>
+    

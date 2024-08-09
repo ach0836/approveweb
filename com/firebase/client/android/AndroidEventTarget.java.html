@@ -1,0 +1,37 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AndroidEventTarget.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>AndroidEventTarget.java</h2>
+        <pre>package com.firebase.client.android;
+
+import android.os.Handler;
+import android.os.Looper;
+import com.firebase.client.EventTarget;
+
+public class AndroidEventTarget implements EventTarget {
+    private final Handler handler = new Handler(Looper.getMainLooper());
+
+    public void postEvent(Runnable r) {
+        this.handler.post(r);
+    }
+
+    public void shutdown() {
+    }
+
+    public void restart() {
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,43 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HttpRedirect.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>HttpRedirect.java</h2>
+        <pre>package org.shaded.apache.http.impl.client;
+
+import java.net.URI;
+import org.shaded.apache.http.annotation.NotThreadSafe;
+import org.shaded.apache.http.client.methods.HttpGet;
+import org.shaded.apache.http.client.methods.HttpHead;
+import org.shaded.apache.http.client.methods.HttpRequestBase;
+
+@NotThreadSafe
+class HttpRedirect extends HttpRequestBase {
+    private String method;
+
+    public HttpRedirect(String method2, URI uri) {
+        if (method2.equalsIgnoreCase(HttpHead.METHOD_NAME)) {
+            this.method = HttpHead.METHOD_NAME;
+        } else {
+            this.method = HttpGet.METHOD_NAME;
+        }
+        setURI(uri);
+    }
+
+    public String getMethod() {
+        return this.method;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

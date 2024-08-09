@@ -1,0 +1,39 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IteratorItems.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>IteratorItems.java</h2>
+        <pre>package gnu.kawa.xml;
+
+import gnu.lists.Consumer;
+import gnu.mapping.CallContext;
+import gnu.mapping.MethodProc;
+import gnu.mapping.Values;
+import java.util.Iterator;
+
+public class IteratorItems extends MethodProc {
+    public static IteratorItems iteratorItems = new IteratorItems();
+
+    public void apply(CallContext ctx) {
+        Consumer out = ctx.consumer;
+        Object arg = ctx.getNextArg();
+        ctx.lastArg();
+        Iterator iter = (Iterator) arg;
+        while (iter.hasNext()) {
+            Values.writeValues(iter.next(), out);
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

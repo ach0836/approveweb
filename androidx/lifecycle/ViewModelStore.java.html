@@ -1,0 +1,45 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ViewModelStore.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ViewModelStore.java</h2>
+        <pre>package androidx.lifecycle;
+
+import java.util.HashMap;
+
+public class ViewModelStore {
+    private final HashMap<String, ViewModel> mMap = new HashMap<>();
+
+    /* access modifiers changed from: package-private */
+    public final void put(String key, ViewModel viewModel) {
+        ViewModel oldViewModel = this.mMap.put(key, viewModel);
+        if (oldViewModel != null) {
+            oldViewModel.onCleared();
+        }
+    }
+
+    /* access modifiers changed from: package-private */
+    public final ViewModel get(String key) {
+        return this.mMap.get(key);
+    }
+
+    public final void clear() {
+        for (ViewModel vm : this.mMap.values()) {
+            vm.onCleared();
+        }
+        this.mMap.clear();
+    }
+}
+</pre>
+    </body>
+    </html>
+    

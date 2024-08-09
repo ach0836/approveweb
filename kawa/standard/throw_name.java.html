@@ -1,0 +1,42 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>throw_name.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>throw_name.java</h2>
+        <pre>package kawa.standard;
+
+import gnu.mapping.ProcedureN;
+import gnu.mapping.Symbol;
+import kawa.lang.GenericError;
+import kawa.lang.NamedException;
+
+public class throw_name extends ProcedureN {
+    public static final throw_name throwName = new throw_name();
+
+    public Object applyN(Object[] args) throws Throwable {
+        if (args.length > 0) {
+            Object key = args[0];
+            if (key instanceof Throwable) {
+                if (args.length == 1) {
+                    prim_throw.throw_it(key);
+                }
+            } else if (key instanceof Symbol) {
+                throw new NamedException((Symbol) key, args);
+            }
+        }
+        throw new GenericError("bad arguments to throw");
+    }
+}
+</pre>
+    </body>
+    </html>
+    

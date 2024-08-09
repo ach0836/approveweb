@@ -1,0 +1,36 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>CookieSpec.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>CookieSpec.java</h2>
+        <pre>package org.shaded.apache.http.cookie;
+
+import java.util.List;
+import org.shaded.apache.http.Header;
+
+public interface CookieSpec {
+    List<Header> formatCookies(List<Cookie> list);
+
+    int getVersion();
+
+    Header getVersionHeader();
+
+    boolean match(Cookie cookie, CookieOrigin cookieOrigin);
+
+    List<Cookie> parse(Header header, CookieOrigin cookieOrigin) throws MalformedCookieException;
+
+    void validate(Cookie cookie, CookieOrigin cookieOrigin) throws MalformedCookieException;
+}
+</pre>
+    </body>
+    </html>
+    

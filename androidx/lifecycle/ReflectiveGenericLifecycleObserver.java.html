@@ -1,0 +1,35 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ReflectiveGenericLifecycleObserver.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ReflectiveGenericLifecycleObserver.java</h2>
+        <pre>package androidx.lifecycle;
+
+import androidx.lifecycle.ClassesInfoCache;
+import androidx.lifecycle.Lifecycle;
+
+class ReflectiveGenericLifecycleObserver implements GenericLifecycleObserver {
+    private final ClassesInfoCache.CallbackInfo mInfo = ClassesInfoCache.sInstance.getInfo(this.mWrapped.getClass());
+    private final Object mWrapped;
+
+    ReflectiveGenericLifecycleObserver(Object wrapped) {
+        this.mWrapped = wrapped;
+    }
+
+    public void onStateChanged(LifecycleOwner source, Lifecycle.Event event) {
+        this.mInfo.invokeCallbacks(source, event, this.mWrapped);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

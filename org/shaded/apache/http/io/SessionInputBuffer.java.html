@@ -1,0 +1,38 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>SessionInputBuffer.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>SessionInputBuffer.java</h2>
+        <pre>package org.shaded.apache.http.io;
+
+import java.io.IOException;
+import org.shaded.apache.http.util.CharArrayBuffer;
+
+public interface SessionInputBuffer {
+    HttpTransportMetrics getMetrics();
+
+    boolean isDataAvailable(int i) throws IOException;
+
+    int read() throws IOException;
+
+    int read(byte[] bArr) throws IOException;
+
+    int read(byte[] bArr, int i, int i2) throws IOException;
+
+    int readLine(CharArrayBuffer charArrayBuffer) throws IOException;
+
+    String readLine() throws IOException;
+}
+</pre>
+    </body>
+    </html>
+    

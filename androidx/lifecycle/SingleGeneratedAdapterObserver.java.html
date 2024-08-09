@@ -1,0 +1,36 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>SingleGeneratedAdapterObserver.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>SingleGeneratedAdapterObserver.java</h2>
+        <pre>package androidx.lifecycle;
+
+import androidx.annotation.RestrictTo;
+import androidx.lifecycle.Lifecycle;
+
+@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+public class SingleGeneratedAdapterObserver implements GenericLifecycleObserver {
+    private final GeneratedAdapter mGeneratedAdapter;
+
+    SingleGeneratedAdapterObserver(GeneratedAdapter generatedAdapter) {
+        this.mGeneratedAdapter = generatedAdapter;
+    }
+
+    public void onStateChanged(LifecycleOwner source, Lifecycle.Event event) {
+        this.mGeneratedAdapter.callMethods(source, event, false, (MethodCallsLogger) null);
+        this.mGeneratedAdapter.callMethods(source, event, true, (MethodCallsLogger) null);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

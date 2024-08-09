@@ -1,0 +1,45 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ListenComplete.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ListenComplete.java</h2>
+        <pre>package com.firebase.client.core.operation;
+
+import com.firebase.client.core.Path;
+import com.firebase.client.core.operation.Operation;
+import com.firebase.client.snapshot.ChildKey;
+
+public class ListenComplete extends Operation {
+    static final /* synthetic */ boolean $assertionsDisabled = (!ListenComplete.class.desiredAssertionStatus());
+
+    public ListenComplete(OperationSource source, Path path) {
+        super(Operation.OperationType.ListenComplete, source, path);
+        if (!$assertionsDisabled && source.isFromUser()) {
+            throw new AssertionError("Can't have a listen complete from a user source");
+        }
+    }
+
+    public Operation operationForChild(ChildKey childKey) {
+        if (this.path.isEmpty()) {
+            return new ListenComplete(this.source, Path.getEmptyPath());
+        }
+        return new ListenComplete(this.source, this.path.popFront());
+    }
+
+    public String toString() {
+        return String.format("ListenComplete { path=%s, source=%s }", new Object[]{getPath(), getSource()});
+    }
+}
+</pre>
+    </body>
+    </html>
+    

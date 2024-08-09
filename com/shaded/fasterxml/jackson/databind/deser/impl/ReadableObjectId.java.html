@@ -1,0 +1,37 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ReadableObjectId.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ReadableObjectId.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.databind.deser.impl;
+
+import java.io.IOException;
+
+public class ReadableObjectId {
+    public final Object id;
+    public Object item;
+
+    public ReadableObjectId(Object obj) {
+        this.id = obj;
+    }
+
+    public void bindItem(Object obj) throws IOException {
+        if (this.item != null) {
+            throw new IllegalStateException("Already had POJO for id (" + this.id.getClass().getName() + ") [" + this.id + "]");
+        }
+        this.item = obj;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

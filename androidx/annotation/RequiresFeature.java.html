@@ -1,0 +1,32 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>RequiresFeature.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>RequiresFeature.java</h2>
+        <pre>package androidx.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.CONSTRUCTOR})
+@Retention(RetentionPolicy.SOURCE)
+public @interface RequiresFeature {
+    String enforcement();
+
+    String name();
+}
+</pre>
+    </body>
+    </html>
+    

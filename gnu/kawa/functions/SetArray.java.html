@@ -1,0 +1,41 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>SetArray.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>SetArray.java</h2>
+        <pre>package gnu.kawa.functions;
+
+import gnu.bytecode.Type;
+import gnu.expr.Language;
+import gnu.mapping.Procedure2;
+import gnu.mapping.Values;
+import java.lang.reflect.Array;
+
+/* compiled from: Setter */
+class SetArray extends Procedure2 {
+    Object array;
+    Type elementType;
+
+    public SetArray(Object array2, Language language) {
+        this.elementType = language.getTypeFor(array2.getClass().getComponentType());
+        this.array = array2;
+    }
+
+    public Object apply2(Object index, Object value) {
+        Array.set(this.array, ((Number) index).intValue(), this.elementType.coerceFromObject(value));
+        return Values.empty;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,28 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ContextualDeserializer.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ContextualDeserializer.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.databind.deser;
+
+import com.shaded.fasterxml.jackson.databind.BeanProperty;
+import com.shaded.fasterxml.jackson.databind.DeserializationContext;
+import com.shaded.fasterxml.jackson.databind.JsonDeserializer;
+import com.shaded.fasterxml.jackson.databind.JsonMappingException;
+
+public interface ContextualDeserializer {
+    JsonDeserializer<?> createContextual(DeserializationContext deserializationContext, BeanProperty beanProperty) throws JsonMappingException;
+}
+</pre>
+    </body>
+    </html>
+    

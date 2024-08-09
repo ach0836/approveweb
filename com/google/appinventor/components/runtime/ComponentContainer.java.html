@@ -1,0 +1,37 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ComponentContainer.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ComponentContainer.java</h2>
+        <pre>package com.google.appinventor.components.runtime;
+
+import android.app.Activity;
+
+public interface ComponentContainer {
+    void $add(AndroidViewComponent androidViewComponent);
+
+    Activity $context();
+
+    Form $form();
+
+    int Height();
+
+    int Width();
+
+    void setChildHeight(AndroidViewComponent androidViewComponent, int i);
+
+    void setChildWidth(AndroidViewComponent androidViewComponent, int i);
+}
+</pre>
+    </body>
+    </html>
+    

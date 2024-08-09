@@ -1,0 +1,59 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>LogWriter.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>LogWriter.java</h2>
+        <pre>package androidx.core.util;
+
+import android.util.Log;
+import androidx.annotation.RestrictTo;
+import java.io.Writer;
+
+@RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+public class LogWriter extends Writer {
+    private StringBuilder mBuilder = new StringBuilder(128);
+    private final String mTag;
+
+    public LogWriter(String tag) {
+        this.mTag = tag;
+    }
+
+    public void close() {
+        flushBuilder();
+    }
+
+    public void flush() {
+        flushBuilder();
+    }
+
+    public void write(char[] buf, int offset, int count) {
+        for (int i = 0; i < count; i++) {
+            char c = buf[offset + i];
+            if (c == 10) {
+                flushBuilder();
+            } else {
+                this.mBuilder.append(c);
+            }
+        }
+    }
+
+    private void flushBuilder() {
+        if (this.mBuilder.length() > 0) {
+            Log.d(this.mTag, this.mBuilder.toString());
+            this.mBuilder.delete(0, this.mBuilder.length());
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

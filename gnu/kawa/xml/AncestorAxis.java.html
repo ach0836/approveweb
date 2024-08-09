@@ -1,0 +1,45 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AncestorAxis.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>AncestorAxis.java</h2>
+        <pre>package gnu.kawa.xml;
+
+import gnu.lists.AbstractSequence;
+import gnu.lists.NodePredicate;
+import gnu.lists.PositionConsumer;
+
+public class AncestorAxis extends TreeScanner {
+    public static AncestorAxis make(NodePredicate type) {
+        AncestorAxis axis = new AncestorAxis();
+        axis.type = type;
+        return axis;
+    }
+
+    private static void scan(AbstractSequence seq, int ipos, int end, NodePredicate type, PositionConsumer out) {
+        int ipos2 = seq.parentPos(ipos);
+        if (ipos2 != end) {
+            scan(seq, ipos2, end, type, out);
+            if (type.isInstancePos(seq, ipos2)) {
+                out.writePosition(seq, ipos2);
+            }
+        }
+    }
+
+    public void scan(AbstractSequence seq, int ipos, PositionConsumer out) {
+        scan(seq, ipos, seq.endPos(), this.type, out);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

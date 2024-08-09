@@ -1,0 +1,50 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ScaleGestureDetectorCompat.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ScaleGestureDetectorCompat.java</h2>
+        <pre>package androidx.core.view;
+
+import android.os.Build;
+import android.view.ScaleGestureDetector;
+
+public final class ScaleGestureDetectorCompat {
+    private ScaleGestureDetectorCompat() {
+    }
+
+    @Deprecated
+    public static void setQuickScaleEnabled(Object scaleGestureDetector, boolean enabled) {
+        setQuickScaleEnabled((ScaleGestureDetector) scaleGestureDetector, enabled);
+    }
+
+    public static void setQuickScaleEnabled(ScaleGestureDetector scaleGestureDetector, boolean enabled) {
+        if (Build.VERSION.SDK_INT >= 19) {
+            scaleGestureDetector.setQuickScaleEnabled(enabled);
+        }
+    }
+
+    @Deprecated
+    public static boolean isQuickScaleEnabled(Object scaleGestureDetector) {
+        return isQuickScaleEnabled((ScaleGestureDetector) scaleGestureDetector);
+    }
+
+    public static boolean isQuickScaleEnabled(ScaleGestureDetector scaleGestureDetector) {
+        if (Build.VERSION.SDK_INT >= 19) {
+            return scaleGestureDetector.isQuickScaleEnabled();
+        }
+        return false;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

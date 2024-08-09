@@ -1,0 +1,52 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ReaderDispatchMacro.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ReaderDispatchMacro.java</h2>
+        <pre>package gnu.kawa.lispexpr;
+
+import gnu.mapping.Procedure;
+import gnu.math.IntNum;
+import gnu.text.Char;
+import gnu.text.Lexer;
+import gnu.text.SyntaxException;
+import java.io.IOException;
+
+public class ReaderDispatchMacro extends ReaderMisc {
+    Procedure procedure;
+
+    public ReaderDispatchMacro(Procedure procedure2) {
+        super(5);
+        this.procedure = procedure2;
+    }
+
+    public Procedure getProcedure() {
+        return this.procedure;
+    }
+
+    public Object read(Lexer in, int ch, int count) throws IOException, SyntaxException {
+        try {
+            return this.procedure.apply3(in.getPort(), Char.make(ch), IntNum.make(count));
+        } catch (IOException ex) {
+            throw ex;
+        } catch (SyntaxException ex2) {
+            throw ex2;
+        } catch (Throwable ex3) {
+            in.fatal("reader macro '" + this.procedure + "' threw: " + ex3);
+            return null;
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

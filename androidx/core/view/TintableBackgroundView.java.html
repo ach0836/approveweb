@@ -1,0 +1,35 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TintableBackgroundView.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>TintableBackgroundView.java</h2>
+        <pre>package androidx.core.view;
+
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
+import androidx.annotation.Nullable;
+
+public interface TintableBackgroundView {
+    @Nullable
+    ColorStateList getSupportBackgroundTintList();
+
+    @Nullable
+    PorterDuff.Mode getSupportBackgroundTintMode();
+
+    void setSupportBackgroundTintList(@Nullable ColorStateList colorStateList);
+
+    void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode mode);
+}
+</pre>
+    </body>
+    </html>
+    

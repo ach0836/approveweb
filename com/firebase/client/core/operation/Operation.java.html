@@ -1,0 +1,55 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Operation.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>Operation.java</h2>
+        <pre>package com.firebase.client.core.operation;
+
+import com.firebase.client.core.Path;
+import com.firebase.client.snapshot.ChildKey;
+
+public abstract class Operation {
+    protected final Path path;
+    protected final OperationSource source;
+    protected final OperationType type;
+
+    public enum OperationType {
+        Overwrite,
+        Merge,
+        AckUserWrite,
+        ListenComplete
+    }
+
+    public abstract Operation operationForChild(ChildKey childKey);
+
+    protected Operation(OperationType type2, OperationSource source2, Path path2) {
+        this.type = type2;
+        this.source = source2;
+        this.path = path2;
+    }
+
+    public Path getPath() {
+        return this.path;
+    }
+
+    public OperationSource getSource() {
+        return this.source;
+    }
+
+    public OperationType getType() {
+        return this.type;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,47 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>DispatchableError.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>DispatchableError.java</h2>
+        <pre>package com.google.appinventor.components.runtime.errors;
+
+import com.google.appinventor.components.runtime.util.ErrorMessages;
+import java.util.Arrays;
+
+public class DispatchableError extends RuntimeError {
+    private final Object[] arguments;
+    private final int errorCode;
+
+    public DispatchableError(int errorCode2) {
+        super(ErrorMessages.formatMessage(errorCode2, (Object[]) null));
+        this.errorCode = errorCode2;
+        this.arguments = new Object[0];
+    }
+
+    public DispatchableError(int errorCode2, Object... arguments2) {
+        super(ErrorMessages.formatMessage(errorCode2, arguments2));
+        this.errorCode = errorCode2;
+        this.arguments = arguments2;
+    }
+
+    public int getErrorCode() {
+        return this.errorCode;
+    }
+
+    public Object[] getArguments() {
+        return Arrays.copyOf(this.arguments, this.arguments.length);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,25 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ConnectionReuseStrategy.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ConnectionReuseStrategy.java</h2>
+        <pre>package org.shaded.apache.http;
+
+import org.shaded.apache.http.protocol.HttpContext;
+
+public interface ConnectionReuseStrategy {
+    boolean keepAlive(HttpResponse httpResponse, HttpContext httpContext);
+}
+</pre>
+    </body>
+    </html>
+    

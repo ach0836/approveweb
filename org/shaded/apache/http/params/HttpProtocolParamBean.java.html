@@ -1,0 +1,47 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HttpProtocolParamBean.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>HttpProtocolParamBean.java</h2>
+        <pre>package org.shaded.apache.http.params;
+
+import org.shaded.apache.http.HttpVersion;
+
+public class HttpProtocolParamBean extends HttpAbstractParamBean {
+    public HttpProtocolParamBean(HttpParams params) {
+        super(params);
+    }
+
+    public void setHttpElementCharset(String httpElementCharset) {
+        HttpProtocolParams.setHttpElementCharset(this.params, httpElementCharset);
+    }
+
+    public void setContentCharset(String contentCharset) {
+        HttpProtocolParams.setContentCharset(this.params, contentCharset);
+    }
+
+    public void setVersion(HttpVersion version) {
+        HttpProtocolParams.setVersion(this.params, version);
+    }
+
+    public void setUserAgent(String userAgent) {
+        HttpProtocolParams.setUserAgent(this.params, userAgent);
+    }
+
+    public void setUseExpectContinue(boolean useExpectContinue) {
+        HttpProtocolParams.setUseExpectContinue(this.params, useExpectContinue);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

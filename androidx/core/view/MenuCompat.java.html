@@ -1,0 +1,44 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MenuCompat.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>MenuCompat.java</h2>
+        <pre>package androidx.core.view;
+
+import android.annotation.SuppressLint;
+import android.os.Build;
+import android.view.Menu;
+import android.view.MenuItem;
+import androidx.core.internal.view.SupportMenu;
+
+public final class MenuCompat {
+    @Deprecated
+    public static void setShowAsAction(MenuItem item, int actionEnum) {
+        item.setShowAsAction(actionEnum);
+    }
+
+    @SuppressLint({"NewApi"})
+    public static void setGroupDividerEnabled(Menu menu, boolean enabled) {
+        if (menu instanceof SupportMenu) {
+            ((SupportMenu) menu).setGroupDividerEnabled(enabled);
+        } else if (Build.VERSION.SDK_INT >= 28) {
+            menu.setGroupDividerEnabled(enabled);
+        }
+    }
+
+    private MenuCompat() {
+    }
+}
+</pre>
+    </body>
+    </html>
+    

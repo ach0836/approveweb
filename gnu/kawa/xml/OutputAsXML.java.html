@@ -1,0 +1,40 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>OutputAsXML.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>OutputAsXML.java</h2>
+        <pre>package gnu.kawa.xml;
+
+import androidx.fragment.app.FragmentTransaction;
+import gnu.lists.FString;
+import gnu.mapping.CharArrayOutPort;
+import gnu.mapping.Procedure1;
+import gnu.xml.XMLPrinter;
+import java.io.Writer;
+
+public class OutputAsXML extends Procedure1 {
+    public int numArgs() {
+        return FragmentTransaction.TRANSIT_FRAGMENT_OPEN;
+    }
+
+    public Object apply1(Object arg) {
+        CharArrayOutPort port = new CharArrayOutPort();
+        XMLPrinter out = new XMLPrinter((Writer) port);
+        out.writeObject(arg);
+        out.flush();
+        return new FString(port.toCharArray());
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,41 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>BasicPoolEntryRef.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>BasicPoolEntryRef.java</h2>
+        <pre>package org.shaded.apache.http.impl.conn.tsccm;
+
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
+import org.shaded.apache.http.annotation.Immutable;
+import org.shaded.apache.http.conn.routing.HttpRoute;
+
+@Immutable
+public class BasicPoolEntryRef extends WeakReference<BasicPoolEntry> {
+    private final HttpRoute route;
+
+    public BasicPoolEntryRef(BasicPoolEntry entry, ReferenceQueue<Object> queue) {
+        super(entry, queue);
+        if (entry == null) {
+            throw new IllegalArgumentException("Pool entry must not be null.");
+        }
+        this.route = entry.getPlannedRoute();
+    }
+
+    public final HttpRoute getRoute() {
+        return this.route;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

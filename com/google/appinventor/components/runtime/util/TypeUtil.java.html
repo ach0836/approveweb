@@ -1,0 +1,43 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TypeUtil.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>TypeUtil.java</h2>
+        <pre>package com.google.appinventor.components.runtime.util;
+
+import com.google.appinventor.components.runtime.errors.DispatchableError;
+
+public final class TypeUtil {
+    private TypeUtil() {
+    }
+
+    public static <T> T cast(Object o, Class<T> tClass, String expected) {
+        if (o == null) {
+            return null;
+        }
+        if (tClass.isInstance(o)) {
+            return tClass.cast(o);
+        }
+        throw new DispatchableError(ErrorMessages.ERROR_INVALID_TYPE, o.getClass().getSimpleName(), expected);
+    }
+
+    public static <T> T castNotNull(Object o, Class<T> tClass, String expected) {
+        if (o != null) {
+            return cast(o, tClass, expected);
+        }
+        throw new DispatchableError(ErrorMessages.ERROR_INVALID_TYPE, "null", expected);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

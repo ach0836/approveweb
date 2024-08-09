@@ -1,0 +1,47 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>KCDATASection.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>KCDATASection.java</h2>
+        <pre>package gnu.kawa.xml;
+
+import gnu.xml.NodeTree;
+import org.w3c.dom.CDATASection;
+
+public class KCDATASection extends KText implements CDATASection {
+    public KCDATASection(NodeTree seq, int ipos) {
+        super(seq, ipos);
+    }
+
+    public short getNodeType() {
+        return 4;
+    }
+
+    public String getNodeName() {
+        return "#cdata-section";
+    }
+
+    public String getData() {
+        return getNodeValue();
+    }
+
+    public int getLength() {
+        StringBuffer sbuf = new StringBuffer();
+        NodeTree tlist = (NodeTree) this.sequence;
+        tlist.stringValue(tlist.posToDataIndex(this.ipos), sbuf);
+        return sbuf.length();
+    }
+}
+</pre>
+    </body>
+    </html>
+    

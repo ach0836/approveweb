@@ -1,0 +1,38 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HttpResponseInterceptorList.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>HttpResponseInterceptorList.java</h2>
+        <pre>package org.shaded.apache.http.protocol;
+
+import java.util.List;
+import org.shaded.apache.http.HttpResponseInterceptor;
+
+public interface HttpResponseInterceptorList {
+    void addResponseInterceptor(HttpResponseInterceptor httpResponseInterceptor);
+
+    void addResponseInterceptor(HttpResponseInterceptor httpResponseInterceptor, int i);
+
+    void clearResponseInterceptors();
+
+    HttpResponseInterceptor getResponseInterceptor(int i);
+
+    int getResponseInterceptorCount();
+
+    void removeResponseInterceptorByClass(Class cls);
+
+    void setInterceptors(List list);
+}
+</pre>
+    </body>
+    </html>
+    

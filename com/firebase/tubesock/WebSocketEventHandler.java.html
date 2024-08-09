@@ -1,0 +1,31 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>WebSocketEventHandler.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>WebSocketEventHandler.java</h2>
+        <pre>package com.firebase.tubesock;
+
+public interface WebSocketEventHandler {
+    void onClose();
+
+    void onError(WebSocketException webSocketException);
+
+    void onLogMessage(String str);
+
+    void onMessage(WebSocketMessage webSocketMessage);
+
+    void onOpen();
+}
+</pre>
+    </body>
+    </html>
+    

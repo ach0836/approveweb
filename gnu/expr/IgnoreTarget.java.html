@@ -1,0 +1,33 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IgnoreTarget.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>IgnoreTarget.java</h2>
+        <pre>package gnu.expr;
+
+import gnu.bytecode.Type;
+
+public class IgnoreTarget extends Target {
+    public Type getType() {
+        return Type.voidType;
+    }
+
+    public void compileFromStack(Compilation comp, Type stackType) {
+        if (!stackType.isVoid()) {
+            comp.getCode().emitPop(1);
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

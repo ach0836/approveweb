@@ -1,0 +1,38 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>WeakListener.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>WeakListener.java</h2>
+        <pre>package gnu.kawa.models;
+
+import java.lang.ref.WeakReference;
+
+public class WeakListener extends WeakReference {
+    WeakListener next;
+
+    public WeakListener(Object referent) {
+        super(referent);
+    }
+
+    public WeakListener(Object referent, WeakListener next2) {
+        super(referent);
+        this.next = next2;
+    }
+
+    public void update(Object view, Model model, Object key) {
+        ((ModelListener) view).modelUpdated(model, key);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

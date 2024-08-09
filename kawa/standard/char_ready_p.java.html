@@ -1,0 +1,42 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>char_ready_p.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>char_ready_p.java</h2>
+        <pre>package kawa.standard;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+
+public class char_ready_p {
+    public static boolean ready(Object arg1) {
+        try {
+            if (arg1 instanceof InputStream) {
+                if (((InputStream) arg1).available() > 0) {
+                    return true;
+                }
+                return false;
+            } else if (arg1 instanceof Reader) {
+                return ((Reader) arg1).ready();
+            } else {
+                throw new ClassCastException("invalid argument to char-ready?");
+            }
+        } catch (IOException e) {
+            return false;
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

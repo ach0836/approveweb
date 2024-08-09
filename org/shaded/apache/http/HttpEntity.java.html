@@ -1,0 +1,43 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HttpEntity.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>HttpEntity.java</h2>
+        <pre>package org.shaded.apache.http;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public interface HttpEntity {
+    void consumeContent() throws IOException;
+
+    InputStream getContent() throws IOException, IllegalStateException;
+
+    Header getContentEncoding();
+
+    long getContentLength();
+
+    Header getContentType();
+
+    boolean isChunked();
+
+    boolean isRepeatable();
+
+    boolean isStreaming();
+
+    void writeTo(OutputStream outputStream) throws IOException;
+}
+</pre>
+    </body>
+    </html>
+    

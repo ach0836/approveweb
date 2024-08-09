@@ -1,0 +1,31 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>DeserializationProblemHandler.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>DeserializationProblemHandler.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.databind.deser;
+
+import com.shaded.fasterxml.jackson.core.JsonParser;
+import com.shaded.fasterxml.jackson.core.JsonProcessingException;
+import com.shaded.fasterxml.jackson.databind.DeserializationContext;
+import com.shaded.fasterxml.jackson.databind.JsonDeserializer;
+import java.io.IOException;
+
+public abstract class DeserializationProblemHandler {
+    public boolean handleUnknownProperty(DeserializationContext deserializationContext, JsonParser jsonParser, JsonDeserializer<?> jsonDeserializer, Object obj, String str) throws IOException, JsonProcessingException {
+        return false;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

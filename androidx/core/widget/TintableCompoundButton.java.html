@@ -1,0 +1,35 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TintableCompoundButton.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>TintableCompoundButton.java</h2>
+        <pre>package androidx.core.widget;
+
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
+import androidx.annotation.Nullable;
+
+public interface TintableCompoundButton {
+    @Nullable
+    ColorStateList getSupportButtonTintList();
+
+    @Nullable
+    PorterDuff.Mode getSupportButtonTintMode();
+
+    void setSupportButtonTintList(@Nullable ColorStateList colorStateList);
+
+    void setSupportButtonTintMode(@Nullable PorterDuff.Mode mode);
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,38 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TunnelRefusedException.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>TunnelRefusedException.java</h2>
+        <pre>package org.shaded.apache.http.impl.client;
+
+import org.shaded.apache.http.HttpException;
+import org.shaded.apache.http.HttpResponse;
+import org.shaded.apache.http.annotation.Immutable;
+
+@Immutable
+public class TunnelRefusedException extends HttpException {
+    private static final long serialVersionUID = -8646722842745617323L;
+    private final HttpResponse response;
+
+    public TunnelRefusedException(String message, HttpResponse response2) {
+        super(message);
+        this.response = response2;
+    }
+
+    public HttpResponse getResponse() {
+        return this.response;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

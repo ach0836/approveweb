@@ -1,0 +1,48 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Overwrite.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>Overwrite.java</h2>
+        <pre>package com.firebase.client.core.operation;
+
+import com.firebase.client.core.Path;
+import com.firebase.client.core.operation.Operation;
+import com.firebase.client.snapshot.ChildKey;
+import com.firebase.client.snapshot.Node;
+
+public class Overwrite extends Operation {
+    private final Node snapshot;
+
+    public Overwrite(OperationSource source, Path path, Node snapshot2) {
+        super(Operation.OperationType.Overwrite, source, path);
+        this.snapshot = snapshot2;
+    }
+
+    public Node getSnapshot() {
+        return this.snapshot;
+    }
+
+    public Operation operationForChild(ChildKey childKey) {
+        if (this.path.isEmpty()) {
+            return new Overwrite(this.source, Path.getEmptyPath(), this.snapshot.getImmediateChild(childKey));
+        }
+        return new Overwrite(this.source, this.path.popFront(), this.snapshot);
+    }
+
+    public String toString() {
+        return String.format("Overwrite { path=%s, source=%s, snapshot=%s }", new Object[]{getPath(), getSource(), this.snapshot});
+    }
+}
+</pre>
+    </body>
+    </html>
+    

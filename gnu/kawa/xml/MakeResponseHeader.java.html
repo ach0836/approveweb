@@ -1,0 +1,37 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MakeResponseHeader.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>MakeResponseHeader.java</h2>
+        <pre>package gnu.kawa.xml;
+
+import gnu.lists.Consumer;
+import gnu.mapping.CallContext;
+import gnu.mapping.MethodProc;
+
+public class MakeResponseHeader extends MethodProc {
+    public static MakeResponseHeader makeResponseHeader = new MakeResponseHeader();
+
+    public void apply(CallContext ctx) {
+        String key = ctx.getNextArg().toString();
+        Object val = ctx.getNextArg();
+        ctx.lastArg();
+        Consumer out = ctx.consumer;
+        out.startAttribute(key);
+        out.write(val.toString());
+        out.endAttribute();
+    }
+}
+</pre>
+    </body>
+    </html>
+    

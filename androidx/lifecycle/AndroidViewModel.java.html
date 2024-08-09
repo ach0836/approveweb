@@ -1,0 +1,37 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AndroidViewModel.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>AndroidViewModel.java</h2>
+        <pre>package androidx.lifecycle;
+
+import android.annotation.SuppressLint;
+import android.app.Application;
+import androidx.annotation.NonNull;
+
+public class AndroidViewModel extends ViewModel {
+    @SuppressLint({"StaticFieldLeak"})
+    private Application mApplication;
+
+    public AndroidViewModel(@NonNull Application application) {
+        this.mApplication = application;
+    }
+
+    @NonNull
+    public <T extends Application> T getApplication() {
+        return this.mApplication;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

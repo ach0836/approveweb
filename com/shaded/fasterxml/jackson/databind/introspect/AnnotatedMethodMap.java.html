@@ -1,0 +1,78 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AnnotatedMethodMap.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>AnnotatedMethodMap.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.databind.introspect;
+
+import java.lang.reflect.Method;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+
+public final class AnnotatedMethodMap implements Iterable<AnnotatedMethod> {
+    protected LinkedHashMap<MemberKey, AnnotatedMethod> _methods;
+
+    public void add(AnnotatedMethod annotatedMethod) {
+        if (this._methods == null) {
+            this._methods = new LinkedHashMap<>();
+        }
+        this._methods.put(new MemberKey(annotatedMethod.getAnnotated()), annotatedMethod);
+    }
+
+    public AnnotatedMethod remove(AnnotatedMethod annotatedMethod) {
+        return remove(annotatedMethod.getAnnotated());
+    }
+
+    public AnnotatedMethod remove(Method method) {
+        if (this._methods != null) {
+            return (AnnotatedMethod) this._methods.remove(new MemberKey(method));
+        }
+        return null;
+    }
+
+    public boolean isEmpty() {
+        return this._methods == null || this._methods.size() == 0;
+    }
+
+    public int size() {
+        if (this._methods == null) {
+            return 0;
+        }
+        return this._methods.size();
+    }
+
+    public AnnotatedMethod find(String str, Class<?>[] clsArr) {
+        if (this._methods == null) {
+            return null;
+        }
+        return this._methods.get(new MemberKey(str, clsArr));
+    }
+
+    public AnnotatedMethod find(Method method) {
+        if (this._methods == null) {
+            return null;
+        }
+        return this._methods.get(new MemberKey(method));
+    }
+
+    public Iterator<AnnotatedMethod> iterator() {
+        if (this._methods != null) {
+            return this._methods.values().iterator();
+        }
+        return Collections.emptyList().iterator();
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,31 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JsonRawValue.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>JsonRawValue.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.ANNOTATION_TYPE, ElementType.METHOD, ElementType.FIELD})
+@JacksonAnnotation
+@Retention(RetentionPolicy.RUNTIME)
+public @interface JsonRawValue {
+    boolean value() default true;
+}
+</pre>
+    </body>
+    </html>
+    

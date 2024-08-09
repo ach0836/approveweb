@@ -1,0 +1,30 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>OperationCanceledException.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>OperationCanceledException.java</h2>
+        <pre>package androidx.core.os;
+
+public class OperationCanceledException extends RuntimeException {
+    public OperationCanceledException() {
+        this((String) null);
+    }
+
+    /* JADX INFO: super call moved to the top of the method (can break code semantics) */
+    public OperationCanceledException(String message) {
+        super(message == null ? "The operation has been canceled." : message);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

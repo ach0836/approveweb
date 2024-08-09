@@ -1,0 +1,29 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Predicate.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>Predicate.java</h2>
+        <pre>package com.firebase.client.core.utilities;
+
+public interface Predicate<T> {
+    public static final Predicate<Object> TRUE = new Predicate<Object>() {
+        public boolean evaluate(Object object) {
+            return true;
+        }
+    };
+
+    boolean evaluate(T t);
+}
+</pre>
+    </body>
+    </html>
+    

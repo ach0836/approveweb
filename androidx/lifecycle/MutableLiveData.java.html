@@ -1,0 +1,29 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MutableLiveData.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>MutableLiveData.java</h2>
+        <pre>package androidx.lifecycle;
+
+public class MutableLiveData<T> extends LiveData<T> {
+    public void postValue(T value) {
+        super.postValue(value);
+    }
+
+    public void setValue(T value) {
+        super.setValue(value);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

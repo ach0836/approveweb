@@ -1,0 +1,41 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>RedirectLocations.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>RedirectLocations.java</h2>
+        <pre>package org.shaded.apache.http.impl.client;
+
+import java.net.URI;
+import java.util.HashSet;
+import java.util.Set;
+import org.shaded.apache.http.annotation.NotThreadSafe;
+
+@NotThreadSafe
+public class RedirectLocations {
+    private final Set<URI> uris = new HashSet();
+
+    public boolean contains(URI uri) {
+        return this.uris.contains(uri);
+    }
+
+    public void add(URI uri) {
+        this.uris.add(uri);
+    }
+
+    public boolean remove(URI uri) {
+        return this.uris.remove(uri);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

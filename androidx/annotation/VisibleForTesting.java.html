@@ -1,0 +1,32 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>VisibleForTesting.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>VisibleForTesting.java</h2>
+        <pre>package androidx.annotation;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.CLASS)
+public @interface VisibleForTesting {
+    public static final int NONE = 5;
+    public static final int PACKAGE_PRIVATE = 3;
+    public static final int PRIVATE = 2;
+    public static final int PROTECTED = 4;
+
+    int otherwise() default 2;
+}
+</pre>
+    </body>
+    </html>
+    

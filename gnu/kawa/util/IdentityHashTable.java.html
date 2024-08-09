@@ -1,0 +1,36 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IdentityHashTable.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>IdentityHashTable.java</h2>
+        <pre>package gnu.kawa.util;
+
+public class IdentityHashTable<K, V> extends GeneralHashTable<K, V> {
+    public IdentityHashTable() {
+    }
+
+    public IdentityHashTable(int capacity) {
+        super(capacity);
+    }
+
+    public int hash(Object key) {
+        return System.identityHashCode(key);
+    }
+
+    public boolean matches(K value1, Object value2) {
+        return value1 == value2;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

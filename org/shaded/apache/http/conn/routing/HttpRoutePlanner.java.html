@@ -1,0 +1,28 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HttpRoutePlanner.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>HttpRoutePlanner.java</h2>
+        <pre>package org.shaded.apache.http.conn.routing;
+
+import org.shaded.apache.http.HttpException;
+import org.shaded.apache.http.HttpHost;
+import org.shaded.apache.http.HttpRequest;
+import org.shaded.apache.http.protocol.HttpContext;
+
+public interface HttpRoutePlanner {
+    HttpRoute determineRoute(HttpHost httpHost, HttpRequest httpRequest, HttpContext httpContext) throws HttpException;
+}
+</pre>
+    </body>
+    </html>
+    

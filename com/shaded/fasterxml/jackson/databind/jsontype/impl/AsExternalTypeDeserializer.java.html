@@ -1,0 +1,45 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AsExternalTypeDeserializer.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>AsExternalTypeDeserializer.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.databind.jsontype.impl;
+
+import com.shaded.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.shaded.fasterxml.jackson.databind.BeanProperty;
+import com.shaded.fasterxml.jackson.databind.JavaType;
+import com.shaded.fasterxml.jackson.databind.jsontype.TypeDeserializer;
+import com.shaded.fasterxml.jackson.databind.jsontype.TypeIdResolver;
+
+public class AsExternalTypeDeserializer extends AsArrayTypeDeserializer {
+    private static final long serialVersionUID = 1;
+
+    public AsExternalTypeDeserializer(JavaType javaType, TypeIdResolver typeIdResolver, String str, boolean z, Class<?> cls) {
+        super(javaType, typeIdResolver, str, z, cls);
+    }
+
+    public AsExternalTypeDeserializer(AsExternalTypeDeserializer asExternalTypeDeserializer, BeanProperty beanProperty) {
+        super(asExternalTypeDeserializer, beanProperty);
+    }
+
+    public TypeDeserializer forProperty(BeanProperty beanProperty) {
+        return beanProperty == this._property ? this : new AsExternalTypeDeserializer(this, beanProperty);
+    }
+
+    public JsonTypeInfo.As getTypeInclusion() {
+        return JsonTypeInfo.As.EXTERNAL_PROPERTY;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

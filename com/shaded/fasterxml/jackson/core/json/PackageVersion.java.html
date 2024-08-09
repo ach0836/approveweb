@@ -1,0 +1,31 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PackageVersion.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>PackageVersion.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.core.json;
+
+import com.shaded.fasterxml.jackson.core.Version;
+import com.shaded.fasterxml.jackson.core.Versioned;
+import com.shaded.fasterxml.jackson.core.util.VersionUtil;
+
+public final class PackageVersion implements Versioned {
+    public static final Version VERSION = VersionUtil.parseVersion("2.2.2", "com.shaded.fasterxml.jackson.core", "jackson-core");
+
+    public Version version() {
+        return VERSION;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,68 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Group.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>Group.java</h2>
+        <pre>package androidx.constraintlayout.widget;
+
+import android.content.Context;
+import android.os.Build;
+import android.util.AttributeSet;
+import android.view.View;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+public class Group extends ConstraintHelper {
+    public Group(Context context) {
+        super(context);
+    }
+
+    public Group(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public Group(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    /* access modifiers changed from: protected */
+    public void init(AttributeSet attrs) {
+        super.init(attrs);
+        this.mUseViewMeasure = false;
+    }
+
+    public void updatePreLayout(ConstraintLayout container) {
+        int visibility = getVisibility();
+        float elevation = 0.0f;
+        if (Build.VERSION.SDK_INT >= 21) {
+            elevation = getElevation();
+        }
+        for (int i = 0; i < this.mCount; i++) {
+            View view = container.getViewById(this.mIds[i]);
+            if (view != null) {
+                view.setVisibility(visibility);
+                if (elevation > 0.0f && Build.VERSION.SDK_INT >= 21) {
+                    view.setElevation(elevation);
+                }
+            }
+        }
+    }
+
+    public void updatePostLayout(ConstraintLayout container) {
+        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) getLayoutParams();
+        params.widget.setWidth(0);
+        params.widget.setHeight(0);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

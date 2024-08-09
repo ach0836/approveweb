@@ -1,0 +1,34 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>SQLiteCursorCompat.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>SQLiteCursorCompat.java</h2>
+        <pre>package androidx.core.database.sqlite;
+
+import android.database.sqlite.SQLiteCursor;
+import android.os.Build;
+import androidx.annotation.NonNull;
+
+public final class SQLiteCursorCompat {
+    private SQLiteCursorCompat() {
+    }
+
+    public static void setFillWindowForwardOnly(@NonNull SQLiteCursor cursor, boolean fillWindowForwardOnly) {
+        if (Build.VERSION.SDK_INT >= 28) {
+            cursor.setFillWindowForwardOnly(fillWindowForwardOnly);
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

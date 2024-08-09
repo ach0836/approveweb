@@ -1,0 +1,40 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>OperatedClientConnection.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>OperatedClientConnection.java</h2>
+        <pre>package org.shaded.apache.http.conn;
+
+import java.io.IOException;
+import java.net.Socket;
+import org.shaded.apache.http.HttpClientConnection;
+import org.shaded.apache.http.HttpHost;
+import org.shaded.apache.http.HttpInetConnection;
+import org.shaded.apache.http.params.HttpParams;
+
+public interface OperatedClientConnection extends HttpClientConnection, HttpInetConnection {
+    Socket getSocket();
+
+    HttpHost getTargetHost();
+
+    boolean isSecure();
+
+    void openCompleted(boolean z, HttpParams httpParams) throws IOException;
+
+    void opening(Socket socket, HttpHost httpHost) throws IOException;
+
+    void update(Socket socket, HttpHost httpHost, boolean z, HttpParams httpParams) throws IOException;
+}
+</pre>
+    </body>
+    </html>
+    

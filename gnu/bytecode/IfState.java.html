@@ -1,0 +1,39 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IfState.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>IfState.java</h2>
+        <pre>package gnu.bytecode;
+
+public class IfState {
+    boolean doing_else;
+    Label end_label;
+    IfState previous;
+    int stack_growth;
+    int start_stack_size;
+    Type[] then_stacked_types;
+
+    public IfState(CodeAttr code) {
+        this(code, new Label(code));
+    }
+
+    public IfState(CodeAttr code, Label endLabel) {
+        this.previous = code.if_stack;
+        code.if_stack = this;
+        this.end_label = endLabel;
+        this.start_stack_size = code.SP;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

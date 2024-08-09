@@ -1,0 +1,31 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ChildEventListener.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ChildEventListener.java</h2>
+        <pre>package com.firebase.client;
+
+public interface ChildEventListener {
+    void onCancelled(FirebaseError firebaseError);
+
+    void onChildAdded(DataSnapshot dataSnapshot, String str);
+
+    void onChildChanged(DataSnapshot dataSnapshot, String str);
+
+    void onChildMoved(DataSnapshot dataSnapshot, String str);
+
+    void onChildRemoved(DataSnapshot dataSnapshot);
+}
+</pre>
+    </body>
+    </html>
+    

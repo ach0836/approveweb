@@ -1,0 +1,35 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>UnwindProtect.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>UnwindProtect.java</h2>
+        <pre>package gnu.commonlisp.lang;
+
+import gnu.expr.Expression;
+import gnu.expr.TryExp;
+import gnu.lists.Pair;
+import kawa.lang.Syntax;
+import kawa.lang.Translator;
+
+public class UnwindProtect extends Syntax {
+    public Expression rewrite(Object obj, Translator tr) {
+        if (!(obj instanceof Pair)) {
+            return tr.syntaxError("invalid syntax for unwind-protect");
+        }
+        Pair pair = (Pair) obj;
+        return new TryExp(tr.rewrite(pair.getCar()), tr.rewrite_body(pair.getCdr()));
+    }
+}
+</pre>
+    </body>
+    </html>
+    

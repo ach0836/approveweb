@@ -1,0 +1,31 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AllowAllHostnameVerifier.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>AllowAllHostnameVerifier.java</h2>
+        <pre>package org.shaded.apache.http.conn.ssl;
+
+import org.shaded.apache.http.annotation.Immutable;
+
+@Immutable
+public class AllowAllHostnameVerifier extends AbstractVerifier {
+    public final void verify(String host, String[] cns, String[] subjectAlts) {
+    }
+
+    public final String toString() {
+        return "ALLOW_ALL";
+    }
+}
+</pre>
+    </body>
+    </html>
+    

@@ -1,0 +1,37 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>VelocityTrackerCompat.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>VelocityTrackerCompat.java</h2>
+        <pre>package androidx.core.view;
+
+import android.view.VelocityTracker;
+
+@Deprecated
+public final class VelocityTrackerCompat {
+    @Deprecated
+    public static float getXVelocity(VelocityTracker tracker, int pointerId) {
+        return tracker.getXVelocity(pointerId);
+    }
+
+    @Deprecated
+    public static float getYVelocity(VelocityTracker tracker, int pointerId) {
+        return tracker.getYVelocity(pointerId);
+    }
+
+    private VelocityTrackerCompat() {
+    }
+}
+</pre>
+    </body>
+    </html>
+    

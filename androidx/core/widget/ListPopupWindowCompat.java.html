@@ -1,0 +1,43 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ListPopupWindowCompat.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ListPopupWindowCompat.java</h2>
+        <pre>package androidx.core.widget;
+
+import android.os.Build;
+import android.view.View;
+import android.widget.ListPopupWindow;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+public final class ListPopupWindowCompat {
+    private ListPopupWindowCompat() {
+    }
+
+    @Deprecated
+    public static View.OnTouchListener createDragToOpenListener(Object listPopupWindow, View src) {
+        return createDragToOpenListener((ListPopupWindow) listPopupWindow, src);
+    }
+
+    @Nullable
+    public static View.OnTouchListener createDragToOpenListener(@NonNull ListPopupWindow listPopupWindow, @NonNull View src) {
+        if (Build.VERSION.SDK_INT >= 19) {
+            return listPopupWindow.createDragToOpenListener(src);
+        }
+        return null;
+    }
+}
+</pre>
+    </body>
+    </html>
+    

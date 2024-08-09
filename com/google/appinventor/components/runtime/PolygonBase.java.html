@@ -1,0 +1,29 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PolygonBase.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>PolygonBase.java</h2>
+        <pre>package com.google.appinventor.components.runtime;
+
+import com.google.appinventor.components.annotations.SimpleObject;
+import com.google.appinventor.components.runtime.util.MapFactory;
+
+@SimpleObject
+public abstract class PolygonBase extends MapFeatureBaseWithFill {
+    public PolygonBase(MapFactory.MapFeatureContainer container, MapFactory.MapFeatureVisitor<Double> distanceComputation) {
+        super(container, distanceComputation);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

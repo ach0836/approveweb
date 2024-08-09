@@ -1,0 +1,57 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PlainLocation.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>PlainLocation.java</h2>
+        <pre>package gnu.mapping;
+
+public class PlainLocation extends NamedLocation {
+    public PlainLocation(Symbol symbol, Object property) {
+        super(symbol, property);
+    }
+
+    public PlainLocation(Symbol symbol, Object property, Object value) {
+        super(symbol, property);
+        this.value = value;
+    }
+
+    public final Object get(Object defaultValue) {
+        if (this.base != null) {
+            return this.base.get(defaultValue);
+        }
+        return this.value != Location.UNBOUND ? this.value : defaultValue;
+    }
+
+    public boolean isBound() {
+        if (this.base != null) {
+            return this.base.isBound();
+        }
+        return this.value != Location.UNBOUND;
+    }
+
+    public final void set(Object newValue) {
+        if (this.base == null) {
+            this.value = newValue;
+        } else if (this.value == DIRECT_ON_SET) {
+            this.base = null;
+            this.value = newValue;
+        } else if (this.base.isConstant()) {
+            getEnvironment().put(getKeySymbol(), getKeyProperty(), newValue);
+        } else {
+            this.base.set(newValue);
+        }
+    }
+}
+</pre>
+    </body>
+    </html>
+    

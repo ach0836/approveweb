@@ -1,0 +1,57 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ManagedClientConnection.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>ManagedClientConnection.java</h2>
+        <pre>package org.shaded.apache.http.conn;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+import javax.net.ssl.SSLSession;
+import org.shaded.apache.http.HttpClientConnection;
+import org.shaded.apache.http.HttpHost;
+import org.shaded.apache.http.HttpInetConnection;
+import org.shaded.apache.http.conn.routing.HttpRoute;
+import org.shaded.apache.http.params.HttpParams;
+import org.shaded.apache.http.protocol.HttpContext;
+
+public interface ManagedClientConnection extends HttpClientConnection, HttpInetConnection, ConnectionReleaseTrigger {
+    HttpRoute getRoute();
+
+    SSLSession getSSLSession();
+
+    Object getState();
+
+    boolean isMarkedReusable();
+
+    boolean isSecure();
+
+    void layerProtocol(HttpContext httpContext, HttpParams httpParams) throws IOException;
+
+    void markReusable();
+
+    void open(HttpRoute httpRoute, HttpContext httpContext, HttpParams httpParams) throws IOException;
+
+    void setIdleDuration(long j, TimeUnit timeUnit);
+
+    void setState(Object obj);
+
+    void tunnelProxy(HttpHost httpHost, boolean z, HttpParams httpParams) throws IOException;
+
+    void tunnelTarget(boolean z, HttpParams httpParams) throws IOException;
+
+    void unmarkReusable();
+}
+</pre>
+    </body>
+    </html>
+    

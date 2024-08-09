@@ -1,0 +1,64 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IdentityOutputStream.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>IdentityOutputStream.java</h2>
+        <pre>package org.shaded.apache.http.impl.io;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import org.shaded.apache.http.io.SessionOutputBuffer;
+
+public class IdentityOutputStream extends OutputStream {
+    private boolean closed = false;
+    private final SessionOutputBuffer out;
+
+    public IdentityOutputStream(SessionOutputBuffer out2) {
+        if (out2 == null) {
+            throw new IllegalArgumentException("Session output buffer may not be null");
+        }
+        this.out = out2;
+    }
+
+    public void close() throws IOException {
+        if (!this.closed) {
+            this.closed = true;
+            this.out.flush();
+        }
+    }
+
+    public void flush() throws IOException {
+        this.out.flush();
+    }
+
+    public void write(byte[] b, int off, int len) throws IOException {
+        if (this.closed) {
+            throw new IOException("Attempted write to closed stream.");
+        }
+        this.out.write(b, off, len);
+    }
+
+    public void write(byte[] b) throws IOException {
+        write(b, 0, b.length);
+    }
+
+    public void write(int b) throws IOException {
+        if (this.closed) {
+            throw new IOException("Attempted write to closed stream.");
+        }
+        this.out.write(b);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

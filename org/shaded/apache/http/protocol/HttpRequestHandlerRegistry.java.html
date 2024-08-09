@@ -1,0 +1,52 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HttpRequestHandlerRegistry.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>HttpRequestHandlerRegistry.java</h2>
+        <pre>package org.shaded.apache.http.protocol;
+
+import java.util.Map;
+
+public class HttpRequestHandlerRegistry implements HttpRequestHandlerResolver {
+    private final UriPatternMatcher matcher = new UriPatternMatcher();
+
+    public void register(String pattern, HttpRequestHandler handler) {
+        if (pattern == null) {
+            throw new IllegalArgumentException("URI request pattern may not be null");
+        } else if (handler == null) {
+            throw new IllegalArgumentException("Request handler may not be null");
+        } else {
+            this.matcher.register(pattern, handler);
+        }
+    }
+
+    public void unregister(String pattern) {
+        this.matcher.unregister(pattern);
+    }
+
+    public void setHandlers(Map map) {
+        this.matcher.setHandlers(map);
+    }
+
+    public HttpRequestHandler lookup(String requestURI) {
+        return (HttpRequestHandler) this.matcher.lookup(requestURI);
+    }
+
+    /* access modifiers changed from: protected */
+    public boolean matchUriRequestPattern(String pattern, String requestUri) {
+        return this.matcher.matchUriRequestPattern(pattern, requestUri);
+    }
+}
+</pre>
+    </body>
+    </html>
+    

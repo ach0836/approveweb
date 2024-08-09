@@ -1,0 +1,45 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>EmptyIterator.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>EmptyIterator.java</h2>
+        <pre>package com.shaded.fasterxml.jackson.databind.util;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class EmptyIterator<T> implements Iterator<T> {
+    private static final EmptyIterator<?> instance = new EmptyIterator<>();
+
+    private EmptyIterator() {
+    }
+
+    public static <T> Iterator<T> instance() {
+        return instance;
+    }
+
+    public boolean hasNext() {
+        return false;
+    }
+
+    public T next() {
+        throw new NoSuchElementException();
+    }
+
+    public void remove() {
+        throw new UnsupportedOperationException();
+    }
+}
+</pre>
+    </body>
+    </html>
+    

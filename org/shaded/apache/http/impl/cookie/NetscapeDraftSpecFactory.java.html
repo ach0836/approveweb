@@ -1,0 +1,41 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>NetscapeDraftSpecFactory.java</title>
+        <style>
+            body { font-family: monospace; white-space: pre; background-color: #f4f4f4; padding: 20px; }
+            .keyword { color: blue; font-weight: bold; }
+            .comment { color: green; }
+            .string { color: brown; }
+        </style>
+    </head>
+    <body>
+        <h2>NetscapeDraftSpecFactory.java</h2>
+        <pre>package org.shaded.apache.http.impl.cookie;
+
+import java.util.Collection;
+import org.shaded.apache.http.annotation.Immutable;
+import org.shaded.apache.http.cookie.CookieSpec;
+import org.shaded.apache.http.cookie.CookieSpecFactory;
+import org.shaded.apache.http.cookie.params.CookieSpecPNames;
+import org.shaded.apache.http.params.HttpParams;
+
+@Immutable
+public class NetscapeDraftSpecFactory implements CookieSpecFactory {
+    public CookieSpec newInstance(HttpParams params) {
+        if (params == null) {
+            return new NetscapeDraftSpec();
+        }
+        String[] patterns = null;
+        Collection<?> param = (Collection) params.getParameter(CookieSpecPNames.DATE_PATTERNS);
+        if (param != null) {
+            patterns = (String[]) param.toArray(new String[param.size()]);
+        }
+        return new NetscapeDraftSpec(patterns);
+    }
+}
+</pre>
+    </body>
+    </html>
+    
